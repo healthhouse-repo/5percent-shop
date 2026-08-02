@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>5% Nutrition | Rich Piana Legacy Supplements</title>
+<style>
+  @font-face { font-family:'Oswald'; src:url('./assets/fonts/Oswald-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+  @font-face { font-family:'Oswald'; src:url('./assets/fonts/Oswald-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
+  @font-face { font-family:'Oswald'; src:url('./assets/fonts/Oswald-SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+  @font-face { font-family:'Oswald'; src:url('./assets/fonts/Oswald-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+  @font-face { font-family:'Barlow Condensed'; src:url('./assets/fonts/BarlowCondensed-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+  @font-face { font-family:'Barlow Condensed'; src:url('./assets/fonts/BarlowCondensed-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
+  @font-face { font-family:'Barlow Condensed'; src:url('./assets/fonts/BarlowCondensed-SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+  @font-face { font-family:'Barlow Condensed'; src:url('./assets/fonts/BarlowCondensed-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+
+  :root{
+    --brand-black:#0A0A0A;
+    --brand-red:#E10600;
+    --brand-yellow:#FFC400;
+    --header-bg:#000000;
+    --body-text:rgba(20,20,20,0.78);
+    --heading-color:#0A0A0A;
+    --foreground:#0A0A0A;
+    --background:#FFFFFF;
+    --btn-bg:#0A0A0A;
+    --btn-text:#FFFFFF;
+    --border-light:#E5E5E5;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;font-family:'Barlow Condensed',Arial,sans-serif;font-weight:500;font-size:17px;
+    color:var(--body-text);background:var(--background);-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4,.heading{
+    font-family:'Oswald',Arial,sans-serif;font-weight:700;color:var(--heading-color);margin:0;
+    text-transform:uppercase;letter-spacing:0.4px;
+  }
+  a{text-decoration:none;color:inherit;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;}
+  img{max-width:100%;display:block;}
+  .container{max-width:1280px;margin:0 auto;padding:0 24px;}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    font-family:'Oswald',Arial,sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:1px;
+    padding:14px 26px;font-size:15px;border-radius:2px;border:2px solid #000000;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease, opacity .15s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px);opacity:0.92;}
+  .btn-dark{background:var(--btn-bg);color:var(--btn-text);border-color:#000000;}
+  .btn-red{background:var(--brand-red);color:#fff;border-color:var(--brand-red);}
+  .btn-outline{background:#FFFFFF;color:#0A0A0A;border:2px solid #000000;}
+  .btn-outline-white{background:transparent;color:#fff;border:2px solid #fff;}
+  .btn-outline-white:hover{background:#fff;color:#0A0A0A;}
+
+  .sale-badge{
+    display:inline-block;background:var(--brand-red);color:#fff;font-weight:700;
+    font-size:12px;letter-spacing:0.5px;text-transform:uppercase;padding:4px 10px;border-radius:2px;
+  }
+  .price-old{color:#9A9A9A;text-decoration:line-through;font-weight:400;font-size:15px;margin-left:8px;}
+  .price-new{color:var(--heading-color);font-weight:700;}
+
+  /* ---------- BRAND BAR ---------- */
+  .brand-bar{
+    background:#000;color:#C9C9C9;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
+    position:fixed;top:0;left:0;right:0;z-index:1001;border-bottom:1px solid #222;
+  }
+  .brand-bar .container{display:flex;gap:24px;height:30px;align-items:center;justify-content:center;}
+  .brand-bar a{color:#C9C9C9;transition:color .15s ease;}
+  .brand-bar a:hover{color:var(--brand-yellow);}
+  .brand-bar .sep{color:#444;}
+  .brand-bar strong{color:var(--brand-yellow);}
+
+  /* ---------- SEARCH ---------- */
+  .search-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:1200;opacity:0;pointer-events:none;transition:opacity .18s ease;}
+  .search-overlay.open{opacity:1;pointer-events:auto;}
+  .search-panel{position:fixed;top:0;left:0;right:0;background:#fff;z-index:1201;transform:translateY(-100%);transition:transform .22s ease;box-shadow:0 8px 40px rgba(0,0,0,0.3);}
+  .search-panel.open{transform:translateY(0);}
+  .search-inner{max-width:1280px;margin:0 auto;padding:26px 24px 30px;}
+  .search-field{display:flex;align-items:center;gap:14px;border-bottom:2px solid #0A0A0A;padding-bottom:12px;}
+  .search-field svg{width:22px;height:22px;stroke:#0A0A0A;}
+  .search-field input{flex:1;border:0;outline:0;font-size:22px;font-family:'Oswald',Arial,sans-serif;color:#0A0A0A;background:transparent;}
+  .search-close{background:none;border:0;cursor:pointer;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#0A0A0A;}
+  .search-close:hover{color:var(--brand-red);}
+  .search-results{margin-top:18px;max-height:52vh;overflow-y:auto;}
+  .search-hint{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:#8A8A8A;margin-bottom:10px;}
+  .search-item{display:flex;align-items:center;gap:14px;padding:11px 8px;cursor:pointer;border-radius:4px;border-bottom:1px solid #EEE;}
+  .search-item:hover,.search-item.sel{background:#F5F5F5;}
+  .search-item img{width:42px;height:42px;object-fit:contain;background:#F0F0F0;border-radius:3px;}
+  .search-item .si-title{font-weight:700;font-size:15px;color:#0A0A0A;font-family:'Oswald',Arial,sans-serif;}
+  .search-item .si-sub{font-size:12px;color:#8A8A8A;text-transform:uppercase;letter-spacing:.06em;}
+  .search-empty{padding:22px 8px;color:#8A8A8A;font-size:14px;}
+
+  /* ---------- NAV ---------- */
+  .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--header-bg);transition:box-shadow .2s ease;}
+  .navbar.scrolled{box-shadow:0 4px 24px rgba(0,0,0,0.5);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:78px;}
+  .nav-left{display:flex;align-items:center;gap:40px;}
+  .logo-link{display:flex;align-items:center;gap:8px;}
+  .logo-mark{font-family:'Oswald',Arial,sans-serif;font-weight:700;font-size:26px;letter-spacing:0.5px;color:#fff;line-height:1;}
+  .logo-mark span{color:var(--brand-yellow);}
+  .logo-sub{font-family:'Barlow Condensed',Arial,sans-serif;font-size:10px;letter-spacing:0.2em;color:var(--brand-red);text-transform:uppercase;font-weight:600;margin-top:2px;}
+  .nav-links{display:flex;gap:30px;list-style:none;margin:0;padding:0;height:100%;}
+  .nav-item{position:relative;display:flex;align-items:center;height:100%;}
+  .nav-links a.top-link{color:#fff;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:0.05em;transition:color .15s ease;position:relative;display:flex;align-items:center;height:100%;font-family:'Oswald',Arial,sans-serif;}
+  .nav-links a.top-link:hover{color:var(--brand-yellow);}
+  .dropdown{position:absolute;top:100%;left:0;background:#fff;min-width:240px;padding:12px 0;box-shadow:0 20px 40px rgba(0,0,0,0.2);border-radius:0 0 4px 4px;opacity:0;pointer-events:none;transform:translateY(-6px);transition:all .18s ease;z-index:50;}
+  .nav-item:hover .dropdown{opacity:1;pointer-events:auto;transform:translateY(0);}
+  .dropdown a{display:block;padding:10px 22px;color:#0A0A0A;font-size:14px;font-weight:500;text-transform:none;letter-spacing:normal;transition:background .15s ease,color .15s ease;}
+  .dropdown a:hover{background:#F5F5F5;color:var(--brand-red);}
+  .nav-right{display:flex;align-items:center;gap:22px;}
+  .icon-btn{background:none;color:#fff;display:flex;align-items:center;justify-content:center;width:36px;height:36px;position:relative;}
+  .icon-btn:hover{color:var(--brand-yellow);}
+  .icon-btn svg{width:21px;height:21px;}
+  .cart-badge{position:absolute;top:-2px;right:-4px;background:var(--brand-red);color:#fff;font-size:10px;font-weight:700;border-radius:50%;width:17px;height:17px;display:flex;align-items:center;justify-content:center;}
+  .hamburger{display:none;background:none;color:#fff;}
+  .hamburger svg{width:24px;height:24px;}
+  @media(max-width:960px){.nav-links{display:none;}.hamburger{display:flex;align-items:center;justify-content:center;}}
+  .mobile-menu{display:none;position:fixed;top:108px;left:0;right:0;background:var(--header-bg);z-index:999;flex-direction:column;padding:16px 24px 24px;gap:4px;border-top:1px solid #2a2a2a;max-height:70vh;overflow-y:auto;}
+  .mobile-menu.open{display:flex;}
+  .mobile-menu .m-cat{color:var(--brand-yellow);font-family:'Oswald',Arial,sans-serif;font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:0.1em;padding:14px 0 4px;}
+  .mobile-menu a{color:#fff;font-weight:600;text-transform:uppercase;font-size:14px;padding:10px 0;border-bottom:1px solid #2a2a2a;font-family:'Oswald',Arial,sans-serif;}
+  main{padding-top:108px;}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;background:var(--brand-black);overflow:hidden;min-height:640px;display:flex;align-items:center;background-image:radial-gradient(circle at 15% 20%, rgba(255,196,0,0.06), transparent 40%);}
+  .hero .container{display:flex;align-items:center;justify-content:space-between;gap:40px;width:100%;flex-wrap:wrap;position:relative;z-index:2;padding-top:60px;padding-bottom:60px;}
+  .hero-text{max-width:580px;}
+  .hero-eyebrow{color:var(--brand-yellow);font-weight:700;letter-spacing:0.15em;font-size:13px;margin-bottom:16px;text-transform:uppercase;font-family:'Oswald',Arial,sans-serif;}
+  .hero h1{font-family:'Oswald',Arial,sans-serif;font-weight:700;color:#fff;font-size:clamp(42px,7vw,90px);line-height:0.95;margin-bottom:20px;text-transform:uppercase;letter-spacing:-0.5px;}
+  .hero h1 .accent-text{color:var(--brand-red);}
+  .hero p{color:rgba(255,255,255,0.72);font-size:18px;line-height:1.6;margin-bottom:32px;max-width:460px;font-family:'Barlow Condensed',Arial,sans-serif;}
+  .hero-cta{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero-image-wrap{position:relative;flex:1;min-width:280px;display:flex;justify-content:center;}
+  .hero-image-wrap img{max-height:560px;filter:drop-shadow(0 40px 60px rgba(0,0,0,0.7));animation:float 5s ease-in-out infinite;position:relative;z-index:2;}
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}}
+  .hero-glow{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(225,6,0,0.25) 0%, transparent 70%);top:50%;right:10%;transform:translateY(-50%);z-index:1;}
+
+  /* ---------- CATEGORY TABS ---------- */
+  .category-section{background:#F5F5F5;padding:80px 0;}
+  .cat-heading{text-align:center;margin-bottom:48px;}
+  .cat-heading h2{font-size:clamp(24px,3.2vw,34px);letter-spacing:0.6px;}
+  .cat-heading p{margin-top:10px;font-size:16px;}
+  .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media(max-width:800px){.cat-grid{grid-template-columns:1fr;}}
+  .cat-tile{position:relative;border-radius:4px;overflow:hidden;cursor:pointer;min-height:340px;box-shadow:0 20px 40px rgba(0,0,0,0.12);background:#111;}
+  .cat-tile img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform .3s ease;opacity:0.92;}
+  .cat-tile:hover img{transform:scale(1.05);}
+  .cat-tile-label{position:absolute;bottom:0;left:0;right:0;padding:24px;background:linear-gradient(to top, rgba(0,0,0,0.75), transparent);color:#fff;font-family:'Oswald',Arial,sans-serif;font-weight:700;font-size:21px;text-transform:uppercase;letter-spacing:0.4px;z-index:2;}
+  .cat-tile-label span{display:block;color:var(--brand-yellow);font-size:12px;letter-spacing:0.15em;margin-top:4px;font-family:'Barlow Condensed',Arial,sans-serif;font-weight:600;}
+
+  /* ---------- PRODUCT GRID ---------- */
+  .products-section{padding:90px 0;background:#fff;}
+  .section-heading{text-align:center;margin-bottom:48px;}
+  .section-heading h2{font-size:clamp(24px,3.2vw,34px);letter-spacing:0.6px;}
+  .section-heading p{margin-top:12px;font-size:16px;}
+  .product-grid-full{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px;}
+  .product-card{
+    border:1px solid var(--border-light);border-radius:6px;padding:24px;text-align:center;
+    transition:box-shadow .2s ease, transform .2s ease;background:#fff;cursor:pointer;position:relative;
+  }
+  .product-card:hover{box-shadow:0 20px 40px rgba(0,0,0,0.12);transform:translateY(-4px);}
+  .product-card .badge-corner{position:absolute;top:14px;left:14px;}
+  .product-card .cat-tag{position:absolute;top:14px;right:14px;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#9A9A9A;font-weight:700;}
+  .product-card img{height:200px;object-fit:contain;margin:0 auto 20px;}
+  .product-card h4{font-family:'Oswald',Arial,sans-serif;font-weight:600;font-size:16px;margin-bottom:8px;min-height:44px;color:var(--heading-color);text-transform:uppercase;}
+  .product-card .price{font-size:17px;margin-bottom:16px;}
+  .product-card .btn{width:100%;padding:12px;font-size:13px;}
+
+  /* ---------- FEATURE SPLIT ---------- */
+  .feature-split{display:flex;flex-wrap:wrap;background:var(--brand-black);}
+  .feature-split .img-half{flex:1;min-width:320px;min-height:420px;position:relative;overflow:hidden;}
+  .feature-split .img-half img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+  .feature-split .text-half{flex:1;min-width:320px;display:flex;flex-direction:column;justify-content:center;padding:60px;}
+  .feature-split h2{color:#fff;font-size:clamp(28px,4vw,48px);margin-bottom:24px;text-transform:uppercase;}
+  .feature-split h2 span{color:var(--brand-red);}
+  .feature-split p{color:rgba(255,255,255,0.68);font-size:17px;line-height:1.7;margin-bottom:32px;max-width:480px;font-family:'Barlow Condensed',Arial,sans-serif;}
+
+  /* ---------- FAQ HOME PREVIEW ---------- */
+  .faq-home{background:#0A0A0A;padding:80px 0;}
+  .faq-home .section-heading h2{color:#fff;}
+  .faq-home .accordions{max-width:820px;margin:0 auto;}
+  .faq-home .accordion-item{border-color:#2a2a2a;}
+  .faq-home .accordion-head h3{color:#fff;}
+  .faq-home .accordion-head .plus{color:var(--brand-yellow);}
+  .faq-home .accordion-body-inner{color:rgba(255,255,255,0.7);}
+
+  /* ---------- NEWSLETTER ---------- */
+  .newsletter{background:var(--header-bg);padding:80px 0;text-align:center;}
+  .newsletter h2{color:#fff;font-size:clamp(26px,4vw,42px);margin-bottom:14px;text-transform:uppercase;}
+  .newsletter p{color:rgba(255,255,255,0.6);margin-bottom:32px;font-size:16px;}
+  .newsletter-form{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;max-width:480px;margin:0 auto;}
+  .newsletter-form input{flex:1;min-width:220px;padding:14px 18px;border:2px solid #333;background:#111;color:#fff;border-radius:2px;font-size:15px;font-family:'Barlow Condensed',Arial,sans-serif;}
+  .newsletter-form input:focus{outline:none;border-color:var(--brand-red);}
+  .newsletter-note{margin-top:16px;color:var(--brand-yellow);font-size:13px;font-weight:700;display:none;}
+  .newsletter-note.show{display:block;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--header-bg);color:rgba(255,255,255,0.6);padding:56px 0 24px;}
+  .footer-logo{margin-bottom:40px;font-family:'Oswald',Arial,sans-serif;font-weight:700;font-size:28px;color:#fff;}
+  .footer-logo span{color:var(--brand-yellow);}
+  .footer-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:32px;margin-bottom:48px;}
+  .footer-grid h5{font-family:'Oswald',Arial,sans-serif;color:#fff;font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:18px;}
+  .footer-grid ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;}
+  .footer-grid a{font-size:14px;transition:color .15s ease;}
+  .footer-grid a:hover{color:var(--brand-yellow);}
+  .footer-bottom{border-top:1px solid #2a2a2a;padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px;}
+  @media(max-width:800px){.footer-grid{grid-template-columns:repeat(2,1fr);}}
+
+  /* ---------- PRODUCT PAGE ---------- */
+  .breadcrumb{padding:20px 0 0;font-size:14px;color:rgba(10,10,10,0.5);}
+  .breadcrumb a:hover{color:var(--brand-red);}
+  .product-detail{padding:32px 0 60px;}
+  .pd-layout{display:flex;gap:56px;flex-wrap:wrap;}
+  .pd-gallery{flex:1;min-width:320px;}
+  .pd-main-image{background:#F7F7F7;border-radius:6px;display:flex;align-items:center;justify-content:center;min-height:420px;padding:20px;margin-bottom:16px;}
+  .pd-main-image img{max-height:420px;object-fit:contain;transition:opacity .2s ease;}
+  .pd-thumbs{display:flex;gap:12px;flex-wrap:wrap;}
+  .pd-thumb{width:76px;height:76px;border-radius:4px;border:2px solid var(--border-light);padding:6px;background:#F7F7F7;cursor:pointer;transition:border-color .15s ease;}
+  .pd-thumb.active{border-color:var(--brand-red);}
+  .pd-thumb img{width:100%;height:100%;object-fit:contain;}
+  .pd-info{flex:1;min-width:320px;}
+  .pd-badges{display:flex;gap:10px;align-items:center;margin-bottom:16px;flex-wrap:wrap;}
+  .pd-info .servings-badge{display:inline-block;background:#F0F0F0;padding:6px 14px;border-radius:2px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;}
+  .pd-info .cat-badge{display:inline-block;background:#0A0A0A;color:#fff;padding:6px 14px;border-radius:2px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;}
+  .pd-info h1{font-weight:700;font-size:42px;margin-bottom:12px;line-height:1.02;letter-spacing:0.4px;}
+  .pd-stars{color:#0A0A0A;font-size:14px;margin-bottom:16px;letter-spacing:2px;}
+  .pd-price-row{display:flex;align-items:center;gap:4px;margin-bottom:20px;font-size:27px;}
+  .pd-info .desc{font-size:16px;line-height:1.7;margin-bottom:28px;}
+  .pd-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;color:var(--heading-color);font-family:'Oswald',Arial,sans-serif;}
+  .flavor-pills{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;}
+  .flavor-pill{padding:12px 18px;border:2px solid var(--border-light);border-radius:30px;font-size:14px;font-weight:600;background:#fff;transition:all .15s ease;}
+  .flavor-pill.selected{border-color:var(--brand-red);background:rgba(225,6,0,0.05);color:var(--brand-red);}
+  .qty-row{display:flex;align-items:center;gap:24px;margin-bottom:28px;flex-wrap:wrap;}
+  .qty-selector{display:flex;align-items:center;border:2px solid var(--border-light);border-radius:30px;overflow:hidden;}
+  .qty-selector button{width:40px;height:40px;font-size:18px;font-weight:700;}
+  .qty-selector button:hover{background:#F5F5F5;}
+  .qty-val{min-width:34px;text-align:center;font-weight:700;font-size:15px;}
+  .add-cart-btn{width:100%;padding:18px;font-size:16px;margin-bottom:24px;}
+  .add-cart-btn.added{background:var(--brand-red);border-color:var(--brand-red);}
+  .trust-row{display:flex;gap:24px;flex-wrap:wrap;padding-top:20px;border-top:1px solid var(--border-light);}
+  .trust-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--heading-color);}
+  .trust-item svg{width:18px;height:18px;stroke:var(--brand-red);}
+  .pd-overview{background:#F7F7F7;padding:80px 0;}
+  .lifestyle-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:48px;}
+  .lifestyle-row img{border-radius:4px;height:280px;object-fit:cover;width:100%;}
+  @media(max-width:800px){.lifestyle-row{grid-template-columns:1fr;}}
+  .overview-text{max-width:760px;margin:0 auto 48px;text-align:center;}
+  .overview-text h2{font-size:clamp(24px,3.2vw,34px);margin-bottom:16px;}
+  .overview-text p{font-size:16px;line-height:1.7;}
+  .features-heading{text-align:center;font-family:'Oswald',Arial,sans-serif;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:#8A8A8A;margin-bottom:24px;}
+  .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  @media(max-width:800px){.features-grid{grid-template-columns:1fr;}}
+  .feature-item{background:#fff;padding:28px;border-radius:6px;border:1px solid var(--border-light);}
+  .feature-item .fnum{color:var(--brand-red);font-family:'Oswald',Arial,sans-serif;font-weight:700;font-size:20px;margin-bottom:10px;}
+  .feature-item h4{font-size:17px;margin-bottom:10px;}
+  .feature-item p{font-size:14px;line-height:1.6;}
+  .accordions{padding:60px 0;max-width:900px;margin:0 auto;}
+  .accordion-item{border-bottom:1px solid var(--border-light);}
+  .accordion-head{display:flex;justify-content:space-between;align-items:center;padding:22px 4px;cursor:pointer;}
+  .accordion-head h3{font-size:17px;}
+  .accordion-head .plus{font-size:22px;font-weight:400;color:var(--brand-red);transition:transform .2s ease;}
+  .accordion-item.open .plus{transform:rotate(45deg);}
+  .accordion-body{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+  .accordion-item.open .accordion-body{max-height:600px;}
+  .accordion-body-inner{padding:0 4px 26px;font-size:15px;line-height:1.7;}
+  .feature-bar{background:var(--brand-black);padding:40px 0;}
+  .feature-bar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;}
+  @media(max-width:800px){.feature-bar-grid{grid-template-columns:repeat(2,1fr);}}
+  .feature-bar-item h4{color:#fff;font-size:15px;letter-spacing:0.5px;}
+
+  /* ---------- SUBPAGES ---------- */
+  .page-header{background:var(--brand-black);padding:70px 0 50px;}
+  .page-header h1{color:#fff;font-size:clamp(30px,4.4vw,48px);margin-bottom:14px;}
+  .page-header p{color:rgba(255,255,255,0.65);font-size:16px;max-width:640px;font-family:'Barlow Condensed',Arial,sans-serif;}
+  .content-section{padding:56px 0;}
+  .block-title{font-size:22px;margin:36px 0 18px;}
+  .block-title:first-child{margin-top:0;}
+  .info-table{width:100%;border-collapse:collapse;margin-bottom:20px;}
+  .info-table th,.info-table td{padding:12px 14px;border-bottom:1px solid var(--border-light);text-align:left;font-size:14px;}
+  .info-table th{font-family:'Oswald',Arial,sans-serif;text-transform:uppercase;font-size:12px;letter-spacing:0.06em;color:#8A8A8A;}
+  .inline-shot{border-radius:6px;margin:24px 0;max-width:480px;}
+  .badge-row{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 28px;}
+  .diet-badge{background:#0A0A0A;color:#fff;padding:8px 16px;border-radius:2px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;}
+  .contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+  @media(max-width:800px){.contact-layout{grid-template-columns:1fr;}}
+  .form-group{margin-bottom:20px;}
+  .form-group label{display:block;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;font-family:'Oswald',Arial,sans-serif;}
+  .form-group input,.form-group select,.form-group textarea{
+    width:100%;padding:13px 16px;border:2px solid var(--border-light);border-radius:2px;font-size:15px;
+    font-family:'Barlow Condensed',Arial,sans-serif;color:#0A0A0A;background:#fff;
+  }
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--brand-red);}
+  .form-note{margin-top:18px;padding:16px;background:#F5F5F5;border-radius:4px;font-size:14px;display:none;}
+  .form-note.show{display:block;}
+  .best-value td{font-weight:700;color:var(--brand-red);}
+  .savings{color:#0A9E4A;font-weight:700;}
+  .reseller-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin:32px 0 48px;}
+  @media(max-width:800px){.reseller-grid{grid-template-columns:1fr;}}
+  .reseller-card{padding:28px;border:1px solid var(--border-light);border-radius:6px;text-align:center;}
+  .reseller-card h4{font-size:18px;margin-bottom:12px;}
+  .reseller-card p{font-size:14px;line-height:1.6;}
+  .faq-note{background:#F5F5F5;padding:24px;border-radius:6px;margin-top:32px;font-size:14px;}
+
+  /* ---------- CART DRAWER ---------- */
+  .cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:1300;opacity:0;pointer-events:none;transition:opacity .2s ease;}
+  .cart-overlay.open{opacity:1;pointer-events:auto;}
+  .cart-panel{position:fixed;top:0;right:0;bottom:0;width:420px;max-width:92vw;background:#fff;z-index:1301;transform:translateX(100%);transition:transform .25s ease;display:flex;flex-direction:column;box-shadow:-10px 0 40px rgba(0,0,0,0.3);}
+  .cart-panel.open{transform:translateX(0);}
+  .cart-header{display:flex;justify-content:space-between;align-items:center;padding:22px 24px;border-bottom:1px solid var(--border-light);}
+  .cart-header h3{font-size:19px;}
+  .cart-close{font-size:22px;}
+  .cart-items{flex:1;overflow-y:auto;padding:16px 24px;}
+  .cart-empty{text-align:center;padding:60px 20px;color:#8A8A8A;font-size:15px;line-height:1.6;}
+  .cart-item{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--border-light);}
+  .cart-item img{width:66px;height:66px;object-fit:contain;background:#F7F7F7;border-radius:4px;}
+  .cart-item-info{flex:1;}
+  .cart-item-info h4{font-size:14px;margin-bottom:4px;text-transform:none;}
+  .cart-item-info .flavor{font-size:12px;color:#8A8A8A;margin-bottom:8px;}
+  .cart-item-row{display:flex;justify-content:space-between;align-items:center;}
+  .cart-qty{display:flex;align-items:center;gap:10px;border:1px solid var(--border-light);border-radius:20px;padding:4px 10px;}
+  .cart-qty button{font-size:14px;font-weight:700;width:16px;}
+  .cart-item-price{font-size:14px;font-weight:700;}
+  .cart-remove{font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:#8A8A8A;margin-top:6px;}
+  .cart-remove:hover{color:var(--brand-red);}
+  .cart-footer{padding:22px 24px;border-top:1px solid var(--border-light);}
+  .cart-subtotal-row{display:flex;justify-content:space-between;font-size:16px;font-weight:700;margin-bottom:16px;}
+  .cart-footer .btn{width:100%;}
+
+  /* ---------- TOAST ---------- */
+  .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:#0A0A0A;color:#fff;padding:14px 26px;border-radius:4px;font-size:14px;font-weight:600;z-index:1400;opacity:0;pointer-events:none;transition:all .25s ease;box-shadow:0 10px 30px rgba(0,0,0,0.4);}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+  /* ---------- PAGE ROUTER ---------- */
+  .page{display:none;}
+  .page.active{display:block;}
+</style>
+</head>
+<body>
+
+<div class="brand-bar">
+  <div class="container">
+    <span>Gratis verzending NL/BE vanaf &euro; 75</span>
+    <span class="sep">|</span>
+    <a href="#volume-pricing"><strong>Bulk &amp; Groothandel</strong></a>
+    <span class="sep">|</span>
+    <a href="#contact">Contact</a>
+  </div>
+</div>
+
+<div class="search-overlay" id="searchOverlay"></div>
+<div class="search-panel" id="searchPanel">
+  <div class="search-inner">
+    <div class="search-field">
+      <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input name="Zoek producten, smaken, pagina's..." type="text" id="searchInput" placeholder="Zoek producten, smaken, pagina's..." autocomplete="off" />
+      <button class="search-close" id="searchClose">ESC</button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <div class="nav-left">
+      <a href="#home" class="logo-link">
+        <div>
+          <div class="logo-mark">5<span>%</span> NUTRITION</div>
+          <div class="logo-sub">Rich Piana &middot; Whatever It Takes</div>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li class="nav-item">
+          <a href="#product/kill-it" class="top-link">Pre-Workout</a>
+          <div class="dropdown">
+            <a href="#product/kill-it">Kill It</a>
+            <a href="#product/5150">5150 High-Stim</a>
+            <a href="#product/full-as-fck">Full As F*ck</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#product/all-day-you-may" class="top-link">Amino&rsquo;s</a>
+          <div class="dropdown">
+            <a href="#product/all-day-you-may">All Day You May</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#product/shake-time" class="top-link">Eiwitten</a>
+          <div class="dropdown">
+            <a href="#product/shake-time">Shake Time</a>
+            <a href="#product/real-carbs-protein">Real Carbs + Protein</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#product/crea-ten" class="top-link">Creatine</a>
+          <div class="dropdown">
+            <a href="#product/crea-ten">Crea-TEN</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#volume-pricing" class="top-link">Bulkbestellingen</a>
+          <div class="dropdown">
+            <a href="#volume-pricing">Staffelprijzen</a>
+            <a href="#request-quote">Offerte Aanvragen</a>
+            <a href="#resellers">Wederverkopers</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="#contact" class="top-link">Contact</a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <button class="icon-btn" id="searchToggle" aria-label="Zoeken">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <button class="icon-btn" id="cartToggle" aria-label="Winkelwagen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293A1 1 0 0 0 5.414 17H17M9 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>
+        <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
+      </button>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="m-cat">Pre-Workout</div>
+  <a href="#product/kill-it">Kill It</a>
+  <a href="#product/5150">5150 High-Stim</a>
+  <a href="#product/full-as-fck">Full As F*ck</a>
+  <div class="m-cat">Amino&rsquo;s</div>
+  <a href="#product/all-day-you-may">All Day You May</a>
+  <div class="m-cat">Eiwitten</div>
+  <a href="#product/shake-time">Shake Time</a>
+  <a href="#product/real-carbs-protein">Real Carbs + Protein</a>
+  <div class="m-cat">Creatine</div>
+  <a href="#product/crea-ten">Crea-TEN</a>
+  <div class="m-cat">Bulk &amp; Groothandel</div>
+  <a href="#volume-pricing">Staffelprijzen</a>
+  <a href="#request-quote">Offerte Aanvragen</a>
+  <a href="#resellers">Wederverkopers</a>
+  <div class="m-cat">Klantenservice</div>
+  <a href="#faq">Veelgestelde Vragen</a>
+  <a href="#shipping">Verzending</a>
+  <a href="#returns">Retourneren</a>
+  <a href="#track-order">Bestelling Volgen</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<main>
+
+  <!-- ============ HOME ============ -->
+  <section class="page active" id="page-home">
+
+    <div class="hero">
+      <div class="hero-glow"></div>
+      <div class="container">
+        <div class="hero-text">
+          <div class="hero-eyebrow">5% Nutrition &mdash; Legendary Series</div>
+          <h1>WHATEVER IT <span class="accent-text">TAKES</span></h1>
+          <p>No shortcuts. No excuses. Rich Piana&rsquo;s formulas are built for the 5% who train harder than everyone else &mdash; brutal pumps, relentless energy, real results.</p>
+          <div class="hero-cta">
+            <a href="#product/kill-it" class="btn btn-red">Bekijk Kill It</a>
+            <a href="#products-grid" class="btn btn-outline-white">Bekijk Alle Producten</a>
+          </div>
+        </div>
+        <div class="hero-image-wrap">
+          <img src="./assets/img/killit_fp.png" alt="5% Nutrition Kill It Pre-Workout" />
+        </div>
+      </div>
+    </div>
+
+    <div class="category-section">
+      <div class="container">
+        <div class="cat-heading">
+          <h2>Bekijk Op Categorie</h2>
+          <p>Alles wat je nodig hebt voor de gym &mdash; energie, aminos, eiwitten en creatine.</p>
+        </div>
+        <div class="cat-grid" id="catGrid">
+          <div class="cat-tile" data-target="#product/kill-it">
+            <img src="./assets/img/killit_lifestyle.jpg" alt="Pre-Workout" />
+            <div class="cat-tile-label">Pre-Workout <span>Kill It &middot; 5150 &middot; Full As F*ck</span></div>
+          </div>
+          <div class="cat-tile" data-target="#product/all-day-you-may">
+            <img src="./assets/img/adym_lifestyle.jpg" alt="Amino's" />
+            <div class="cat-tile-label">Amino&rsquo;s &amp; Herstel <span>All Day You May</span></div>
+          </div>
+          <div class="cat-tile" data-target="#product/shake-time">
+            <img src="./assets/img/p5150_landing.jpg" alt="Eiwitten & Creatine" />
+            <div class="cat-tile-label">Eiwitten &amp; Creatine <span>Shake Time &middot; Real Carbs &middot; Crea-TEN</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="products-section" id="products-grid">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Het Volledige Assortiment</h2>
+          <p>Legendary Series formules. Officieel 5% Nutrition &mdash; geautoriseerd EU-reseller.</p>
+        </div>
+        <div class="product-grid-full" id="productGridFull"></div>
+      </div>
+    </div>
+
+    <div class="feature-split">
+      <div class="img-half">
+        <img src="./assets/img/killit_benefits.jpg" alt="5% Nutrition sporter tijdens training" />
+      </div>
+      <div class="text-half">
+        <h2>Train Als Een <span>Legende</span></h2>
+        <p>5% Nutrition was built on Rich Piana&rsquo;s uncompromising philosophy: no shortcuts, only results. Every formula is dosed at clinically-backed levels &mdash; no proprietary blends, no fillers, full label transparency. This is supplementation for the 5% who refuse to settle for average.</p>
+        <div>
+          <a href="#product/kill-it" class="btn btn-red">Bekijk Pre-Workout</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-home">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Veelgestelde Vragen</h2>
+          <p>Kort antwoord nodig? Check onze meest gestelde vragen.</p>
+        </div>
+        <div class="accordions" id="homeFaqAccordions">
+          <div class="accordion-item">
+            <div class="accordion-head"><h3>Zijn 5% Nutrition producten legaal in de EU?</h3><span class="plus">+</span></div>
+            <div class="accordion-body"><div class="accordion-body-inner">Ja. Alle producten die wij aanbieden zijn de EU/UK-goedgekeurde formules, conform Europese voedingssupplementenregelgeving.</div></div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-head"><h3>Kan ik meerdere producten combineren (stacken)?</h3><span class="plus">+</span></div>
+            <div class="accordion-body"><div class="accordion-body-inner">Zeker. Veel klanten combineren bijvoorbeeld Kill It of 5150 met All Day You May tijdens de training en Shake Time of Real Carbs + Protein na de training.</div></div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-head"><h3>Leveren jullie ook aan bedrijven / gyms?</h3><span class="plus">+</span></div>
+            <div class="accordion-body"><div class="accordion-body-inner">Ja, wij leveren aan gyms, sportscholen en resellers met staffelkorting vanaf 6 units. Bekijk onze <a href="#volume-pricing">Bulk &amp; Wholesale</a> pagina.</div></div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-head"><h3>Hoe snel wordt mijn bestelling geleverd?</h3><span class="plus">+</span></div>
+            <div class="accordion-body"><div class="accordion-body-inner">Bestellingen worden binnen 1 werkdag verzonden vanuit Amsterdam. Levertijd NL/BE is doorgaans 1-2 werkdagen.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="newsletter">
+      <div class="container">
+        <h2>Schrijf Je In Voor 15% Korting</h2>
+        <p>Word lid van #The5Percent voor exclusieve deals, drops en trainingstips.</p>
+        <form class="newsletter-form" id="newsletterForm">
+          <input name="Vul je e-mailadres in" type="email" placeholder="Vul je e-mailadres in" required />
+          <button type="submit" class="btn btn-outline-white">Aanmelden</button>
+        </form>
+        <div class="newsletter-note" id="newsletterNote">Bedankt! Check je inbox voor je code.</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============ PRODUCT PAGE (dynamic) ============ -->
+  <section class="page" id="page-product">
+    <div class="container breadcrumb">
+      <a href="#home">Start</a> / <span id="pdCategoryCrumb">Product</span> / <span id="pdNameCrumb">&nbsp;</span>
+    </div>
+    <div class="container product-detail">
+      <div class="pd-layout">
+        <div class="pd-gallery">
+          <div class="pd-main-image">
+            <img id="pdMainImage" src="" alt="" />
+          </div>
+          <div class="pd-thumbs" id="pdThumbs"></div>
+        </div>
+        <div class="pd-info">
+          <div class="pd-badges">
+            <span class="cat-badge" id="pdCatBadge">Pre-Workout</span>
+            <span class="servings-badge" id="pdServingsBadge">30 Porties</span>
+            <span class="sale-badge" id="pdSaleBadge">Aanbieding</span>
+          </div>
+          <h1 id="pdName">Productnaam</h1>
+          <div class="pd-stars">&#9733;&#9733;&#9733;&#9733;&#9733; <span style="color:rgba(10,10,10,0.5);font-size:12px;" id="pdReviews">(1.000 recensies)</span></div>
+          <div class="pd-price-row">
+            <span class="price-new" id="pdPriceNew">&euro; 0,00</span>
+            <span class="price-old" id="pdPriceOld">&euro; 0,00</span>
+          </div>
+          <p class="desc" id="pdDesc">Beschrijving.</p>
+
+          <div class="pd-label">Smaak</div>
+          <div class="flavor-pills" id="flavorPills"></div>
+
+          <div class="qty-row">
+            <div>
+              <div class="pd-label">Aantal</div>
+              <div class="qty-selector">
+                <button id="qtyMinus">&minus;</button>
+                <span class="qty-val" id="qtyVal">1</span>
+                <button id="qtyPlus">+</button>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-red add-cart-btn" id="addToCartBtn">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293A1 1 0 0 0 5.414 17H17M9 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>
+            In Winkelwagen
+          </button>
+
+          <div class="trust-row">
+            <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Volledige Labeltransparantie</div>
+            <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Onafhankelijk Getest</div>
+            <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> EU/UK Goedgekeurd</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pd-overview">
+      <div class="container">
+        <div class="lifestyle-row" id="pdLifestyleRow"></div>
+        <div class="overview-text">
+          <h2>Productoverzicht</h2>
+          <p id="pdOverviewText">Overzicht.</p>
+        </div>
+        <div class="features-heading">Belangrijkste Kenmerken</div>
+        <div class="features-grid" id="featuresGrid"></div>
+      </div>
+    </div>
+
+    <div class="accordions" id="accordions">
+      <div class="accordion-item">
+        <div class="accordion-head"><h3>Ingredi&euml;nten</h3><span class="plus">+</span></div>
+        <div class="accordion-body"><div class="accordion-body-inner" id="pdIngredientsText">-</div></div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-head"><h3>Voedingswaarden</h3><span class="plus">+</span></div>
+        <div class="accordion-body"><div class="accordion-body-inner" id="pdNutritionText">-</div></div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-head"><h3>Gebruiksaanwijzing</h3><span class="plus">+</span></div>
+        <div class="accordion-body"><div class="accordion-body-inner" id="pdHowToUseText">-</div></div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-head"><h3>Waarschuwing</h3><span class="plus">+</span></div>
+        <div class="accordion-body"><div class="accordion-body-inner" id="pdWarningText">-</div></div>
+      </div>
+    </div>
+
+    <div class="feature-bar">
+      <div class="container">
+        <div class="feature-bar-grid" id="pdFeatureBar"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INGREDIENTS ============ -->
+  <section class="page" id="page-ingredients">
+    <div class="page-header"><div class="container">
+      <h1>Ingredi&euml;nten &amp; Technologie</h1>
+      <p>Volledige transparantie op elk label. Geen proprietary blends &mdash; je weet precies wat je binnenkrijgt en waarom.</p>
+    </div></div>
+    <div class="container content-section">
+      <h2 class="block-title">Energy &amp; Focus (Kill It / 5150 / Full As F*ck)</h2>
+      <table class="info-table">
+        <thead><tr><th>Ingredi&euml;nt</th><th>Toepassing</th><th>Wat het doet</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Caffeine Anhydrous + Caffeine Citrate</strong></td><td>Kill It, 5150</td><td>Snelwerkend en langdurig stimulerend voor scherpe alertheid en energie, tot 400mg per dosis in 5150.</td></tr>
+          <tr><td><strong>N-Acetyl L-Tyrosine</strong></td><td>Kill It, 5150</td><td>Ondersteunt mentale focus en helderheid tijdens intensieve trainingen.</td></tr>
+          <tr><td><strong>Synephrine HCl</strong></td><td>5150</td><td>Ondersteunt thermogenese en energie in de high-stim formule.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 class="block-title">Pumps &amp; Performance</h2>
+      <table class="info-table">
+        <thead><tr><th>Ingredi&euml;nt</th><th>Toepassing</th><th>Wat het doet</th></tr></thead>
+        <tbody>
+          <tr><td><strong>L-Citrulline</strong></td><td>Kill It (2.500-5.000mg), Full As F*ck</td><td>Verhoogt de stikstofmonoxide-productie voor grotere, langduriger pumps en betere doorbloeding.</td></tr>
+          <tr><td><strong>Nitrosigine&reg;</strong></td><td>Full As F*ck</td><td>Klinisch onderzochte gebonden arginine-silicaat die de bloedtoevoer tot 3 uur ondersteunt.</td></tr>
+          <tr><td><strong>GlycerSize&reg; (Glycerol)</strong></td><td>Full As F*ck</td><td>Hyperhydrateert spierweefsel voor een &lsquo;full&rsquo; en vasculair uiterlijk.</td></tr>
+          <tr><td><strong>Creatine Monohydrate</strong></td><td>Kill It (1.250-2.500mg)</td><td>Ondersteunt kracht en herstel tussen sets in.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 class="block-title">Recovery &amp; Aminos (All Day You May)</h2>
+      <table class="info-table">
+        <thead><tr><th>Ingredi&euml;nt</th><th>Dosering</th><th>Wat het doet</th></tr></thead>
+        <tbody>
+          <tr><td><strong>BCAA 10:1:1 (Leucine, Isoleucine, Valine)</strong></td><td>6g</td><td>Hoge Leucine-ratio triggert eiwitsynthese en spierherstel.</td></tr>
+          <tr><td><strong>Essential Amino Acids (EAA blend)</strong></td><td>Volledige set</td><td>Alle 9 essenti&euml;le aminozuren voor spierherstel en -opbouw.</td></tr>
+          <tr><td><strong>Glucosamine &amp; MSM</strong></td><td>Inbegrepen</td><td>Ondersteunt gewrichten tijdens intensieve trainingsperiodes.</td></tr>
+          <tr><td><strong>Milk Thistle</strong></td><td>Inbegrepen</td><td>Ondersteunt leverfunctie tijdens intensief supplementgebruik.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 class="block-title">Creatine Complex (Crea-TEN)</h2>
+      <p>Crea-TEN combineert 10 vormen van creatine (waaronder Monohydraat, HCl en Magnesium Chelaat) met een Creatine Accelerate Blend van Taurine, Betaine, Gymnema Sylvestre, Banaba en Fenugreek voor optimale opname zonder loading fase en met minder waterretentie/bloating.</p>
+
+      <div style="margin-top:8px;">
+        <a href="#product/kill-it" class="btn btn-dark">Bekijk Kill It</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NUTRITION ============ -->
+  <section class="page" id="page-nutrition">
+    <div class="page-header"><div class="container">
+      <h1>Voedingswaarden</h1>
+      <p>Algemene voedingswaarde-richtlijnen voor de 5% Nutrition line-up. Exacte waarden per product vind je op de productpagina.</p>
+    </div></div>
+    <div class="container content-section">
+      <div class="contact-layout">
+        <div>
+          <h2 class="block-title">Pre-Workout (Kill It, 30 porties)</h2>
+          <table class="info-table">
+            <tbody>
+              <tr><td><strong>Portiegrootte</strong></td><td>1-2 Scoops (11.2g / 22.4g)</td></tr>
+              <tr><td><strong>Calorie&euml;n</strong></td><td>5-10</td></tr>
+              <tr><td><strong>Cafe&iuml;ne</strong></td><td>~163mg / ~325mg</td></tr>
+              <tr><td><strong>L-Citrulline</strong></td><td>2.500mg / 5.000mg</td></tr>
+              <tr><td><strong>Creatine Monohydrate</strong></td><td>1.250mg / 2.500mg</td></tr>
+            </tbody>
+          </table>
+          <h2 class="block-title">Eiwitten (Shake Time, 20 porties)</h2>
+          <table class="info-table">
+            <tbody>
+              <tr><td><strong>Portiegrootte</strong></td><td>1 Scoop (&plusmn;38g)</td></tr>
+              <tr><td><strong>Calorie&euml;n</strong></td><td>130</td></tr>
+              <tr><td><strong>Eiwit</strong></td><td>24-25g</td></tr>
+              <tr><td><strong>Totaal Vet</strong></td><td>2.5g</td></tr>
+              <tr><td><strong>Totaal Koolhydraten</strong></td><td>2g</td></tr>
+            </tbody>
+          </table>
+          <div class="badge-row">
+            <span class="diet-badge">Glutenvrij</span>
+            <span class="diet-badge">Geen Vulstoffen</span>
+            <span class="diet-badge">Uit Echte Voeding</span>
+          </div>
+          <h2 class="block-title">Allergeneninformatie</h2>
+          <p>Geproduceerd in een faciliteit die ook melk, ei, soja, tarwe, pinda- en notenproducten verwerkt. Shake Time en Real Carbs + Protein bevatten eiwitten uit rund, kip en ei. Raadpleeg altijd het label van je specifieke product voor actuele informatie.</p>
+        </div>
+        <div>
+          <img class="inline-shot" src="./assets/img/adym_benefits.jpg" alt="5% Nutrition supplement voordelen" style="max-width:100%;" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW TO USE ============ -->
+  <section class="page" id="page-how-to-use">
+    <div class="page-header"><div class="container">
+      <h1>Gebruiksaanwijzing</h1>
+      <p>Doseeradvies voor de volledige 5% Nutrition line-up. Begin altijd laag om je tolerantie te testen.</p>
+    </div></div>
+    <div class="container content-section">
+      <h2 class="block-title">Kill It / 5150 (Pre-Workout)</h2>
+      <p>Meng 1 scoop met 250-300ml water voor gematigde intensiteit, of 2 scoops voor volledige intensiteit. Neem 20-30 minuten voor de training. Test altijd eerst je tolerantie met 1 scoop, met name bij 5150 (hoog stimulerend, tot 400mg cafe&iuml;ne).</p>
+      <h2 class="block-title">Full As F*ck (Stim-Free Pump)</h2>
+      <p>Meng 1-2 scoops met water, 20-30 minuten voor de training. Uitstekend te combineren (stacken) met Kill It of 5150 voor extra pumps zonder extra stimulantia.</p>
+      <h2 class="block-title">All Day You May (Aminos)</h2>
+      <p>Meng 1 scoop met 400-500ml water. Drink tijdens de training voor hydratatie en herstel, of gedurende de dag tussen maaltijden door om spierafbraak te voorkomen.</p>
+      <h2 class="block-title">Shake Time / Real Carbs + Protein</h2>
+      <p>Meng 1 scoop met 250-350ml water, melk of plantaardige drink. Ideaal als maaltijdvervanger, post-workout shake of eiwitrijke snack tussendoor.</p>
+      <h2 class="block-title">Crea-TEN (Creatine)</h2>
+      <p>Neem dagelijks 1 scoop, elke dag van het jaar &mdash; ook op rustdagen. Geen loading fase nodig. Meng met water of je favoriete shake.</p>
+      <div class="faq-note">Combineer meerdere producten? Neem pre-workout producten voor de training, All Day You May tijdens de training, en Shake Time of Real Carbs + Protein na de training voor optimaal herstel.</div>
+    </div>
+  </section>
+
+  <!-- ============ WARNINGS ============ -->
+  <section class="page" id="page-warnings">
+    <div class="page-header"><div class="container">
+      <h1>Waarschuwingen</h1>
+      <p>Belangrijke veiligheidsinformatie voor gebruik van 5% Nutrition producten.</p>
+    </div></div>
+    <div class="container content-section">
+      <p>Niet bedoeld voor gebruik door personen onder de 18 jaar. Gebruik niet tijdens zwangerschap of borstvoeding. Raadpleeg een arts voordat je dit product gebruikt als je medicijnen gebruikt of onder medische behandeling staat.</p>
+      <h2 class="block-title">Cafe&iuml;nehoudende producten (Kill It, 5150)</h2>
+      <p>Kill It bevat tot 325mg cafe&iuml;ne per dosis (2 scoops), vergelijkbaar met ongeveer 3 kopjes koffie. 5150 is een high-stimulant formule met tot 400mg cafe&iuml;ne per dosis en is niet geschikt voor cafe&iuml;negevoelige personen of gebruik na 16:00 uur. Overschrijd nooit de aanbevolen dosering. Gebruik niet in combinatie met andere cafe&iuml;nebronnen of stimulerende middelen.</p>
+      <h2 class="block-title">Stim-Free producten (Full As F*ck, Crea-TEN, All Day You May, Shake Time, Real Carbs + Protein)</h2>
+      <p>Deze producten bevatten geen stimulantia maar kunnen actieve ingredi&euml;nten bevatten die niet geschikt zijn voor personen met bestaande medische aandoeningen. Raadpleeg bij twijfel altijd eerst een arts.</p>
+      <p>Bewaren op een droge, koele plaats buiten bereik van kinderen. Niet gebruiken na de vermelde THT-datum op de verpakking.</p>
+    </div>
+  </section>
+
+  <!-- ============ VOLUME PRICING ============ -->
+  <section class="page" id="page-volume-pricing">
+    <div class="page-header"><div class="container">
+      <h1>Staffelprijzen</h1>
+      <p>Bulk &amp; Wholesale pricing voor gyms, sportscholen, personal trainers en resellers. Hoe meer units, hoe hoger je korting.</p>
+    </div></div>
+    <div class="container content-section">
+      <p>Onderstaande staffelprijzen gelden per product (Kill It Pre-Workout als voorbeeld, RRP &euro; 38,95). Voor de overige producten in de line-up gelden vergelijkbare staffels &mdash; vraag een offerte aan voor een volledig overzicht.</p>
+      <table class="info-table">
+        <thead><tr><th>Aantal units</th><th>Prijs per unit</th><th>Besparing</th></tr></thead>
+        <tbody id="volumePricingBody"></tbody>
+      </table>
+      <div style="margin-top:32px;">
+        <a href="#request-quote" class="btn btn-red">Offerte Aanvragen</a>
+        <a href="#resellers" class="btn btn-outline" style="margin-left:12px;">Reseller Voorwaarden</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REQUEST A QUOTE ============ -->
+  <section class="page" id="page-request-quote">
+    <div class="page-header"><div class="container">
+      <h1>Offerte Aanvragen</h1>
+      <p>Vraag een offerte op maat aan voor bulkbestellingen. Wij reageren binnen 1 werkdag.</p>
+    </div></div>
+    <div class="container content-section">
+      <form id="quoteForm" style="max-width:640px;">
+        <div class="form-group"><label>Bedrijfsnaam</label><input name="Bedrijfsnaam" type="text" required /></div>
+        <div class="form-group"><label>Contactpersoon</label><input name="Contactpersoon" type="text" required /></div>
+        <div class="form-group"><label>E-mailadres</label><input name="E-mailadres" type="email" required /></div>
+        <div class="form-group"><label>Telefoonnummer</label><input name="Telefoonnummer" type="tel" /></div>
+        <div class="form-group"><label>KvK-nummer</label><input name="KvK-nummer" type="text" /></div>
+        <div class="form-group"><label>Gewenste producten &amp; aantallen</label><textarea name="Gewenste producten & aantallen" rows="4" required></textarea></div>
+        <button type="submit" class="btn btn-red">Verstuur Aanvraag</button>
+        <div class="form-note" id="quoteConfirm">Bedankt! Je offerteaanvraag is verstuurd. Ons team neemt binnen 1 werkdag contact met je op.</div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ RESELLERS ============ -->
+  <section class="page" id="page-resellers">
+    <div class="page-header"><div class="container">
+      <h1>Wederverkopers</h1>
+      <p>Word officieel 5% Nutrition reseller en profiteer van scherpe marges, marketingondersteuning en een betrouwbare voorraad.</p>
+    </div></div>
+    <div class="container content-section">
+      <div class="reseller-grid">
+        <div class="reseller-card">
+          <h4>Reseller Marge</h4>
+          <p>Tot 45% marge op advies-verkoopprijs bij afname vanaf 24 units per bestelling.</p>
+        </div>
+        <div class="reseller-card">
+          <h4>Marketingondersteuning</h4>
+          <p>Toegang tot productfoto&rsquo;s, banners en social content om jouw verkoop te boosten.</p>
+        </div>
+        <div class="reseller-card">
+          <h4>Betrouwbare Levering</h4>
+          <p>Vaste voorraad en snelle levering vanuit ons magazijn in Amsterdam, binnen 24-48u.</p>
+        </div>
+      </div>
+      <h2 class="block-title">Voorwaarden</h2>
+      <ul>
+        <li>Geldig uittreksel Kamer van Koophandel (of internationaal equivalent) vereist.</li>
+        <li>Minimale eerste bestelling: 24 units, verdeeld over maximaal 3 producten.</li>
+        <li>Wederverkoop uitsluitend via eigen fysieke winkel, gym of geverifieerd webshop-kanaal.</li>
+        <li>Minimale adviesverkoopprijs (MAP) van toepassing ter bescherming van het merk.</li>
+      </ul>
+      <div style="margin-top:24px;">
+        <a href="#request-quote" class="btn btn-red">Word Reseller &mdash; Vraag Offerte Aan</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="page" id="page-contact">
+    <div class="page-header"><div class="container">
+      <h1>Contact</h1>
+      <p>Vragen over een bestelling, product of samenwerking? Wij helpen je graag verder.</p>
+    </div></div>
+    <div class="container content-section">
+      <div class="contact-layout">
+        <div>
+          <h2 class="block-title">Gegevens</h2>
+          <p><strong>5% Nutrition Nederland</strong><br/>IJburglaan 837<br/>Amsterdam, Nederland</p>
+          <p>E-mail: <a href="mailto:info@5nutritionnederland.nl" style="color:var(--brand-red);">info@5nutritionnederland.nl</a></p>
+          <p>Bereikbaar op werkdagen van 09:00 tot 17:30.</p>
+        </div>
+        <div>
+          <h2 class="block-title">Stuur Een Bericht</h2>
+          <form id="contactForm">
+            <div class="form-group"><label>Naam</label><input name="Naam" type="text" required /></div>
+            <div class="form-group"><label>E-mailadres</label><input name="E-mailadres" type="email" required /></div>
+            <div class="form-group"><label>Bericht</label><textarea name="Bericht" rows="4" required></textarea></div>
+            <button type="submit" class="btn btn-red">Verstuur</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SHIPPING ============ -->
+  <section class="page" id="page-shipping">
+    <div class="page-header"><div class="container">
+      <h1>Verzending</h1>
+      <p>Snel en betrouwbaar geleverd, vanuit ons magazijn in Amsterdam.</p>
+    </div></div>
+    <div class="container content-section">
+      <h2 class="block-title">Verzendtijden</h2>
+      <table class="info-table">
+        <thead><tr><th>Regio</th><th>Levertijd</th><th>Kosten</th></tr></thead>
+        <tbody>
+          <tr><td>Nederland</td><td>1-2 werkdagen</td><td>Gratis vanaf &euro; 75, anders &euro; 4,95</td></tr>
+          <tr><td>Belgi&euml;</td><td>2-3 werkdagen</td><td>Gratis vanaf &euro; 75, anders &euro; 6,95</td></tr>
+          <tr><td>Overig EU</td><td>3-5 werkdagen</td><td>Vanaf &euro; 9,95</td></tr>
+        </tbody>
+      </table>
+      <p>Alle bestellingen worden binnen 1 werkdag verwerkt en verzonden met track &amp; trace.</p>
+    </div>
+  </section>
+
+  <!-- ============ RETURNS ============ -->
+  <section class="page" id="page-returns">
+    <div class="page-header"><div class="container">
+      <h1>Retourneren</h1>
+      <p>Niet tevreden? Je hebt 14 dagen herroepingsrecht op ongeopende producten.</p>
+    </div></div>
+    <div class="container content-section">
+      <p>Je kunt ongeopende producten binnen 14 dagen na ontvangst retourneren. Neem contact op via <a href="#contact" style="color:var(--brand-red);">ons contactformulier</a> om een retour aan te melden. Na goedkeuring ontvang je het aankoopbedrag (exclusief verzendkosten) binnen 5 werkdagen retour.</p>
+      <p>Geopende producten kunnen om hygi&euml;nische redenen niet worden geretourneerd, tenzij het product een productiefout vertoont.</p>
+    </div>
+  </section>
+
+  <!-- ============ TRACK ORDER ============ -->
+  <section class="page" id="page-track-order">
+    <div class="page-header"><div class="container">
+      <h1>Bestelling Volgen</h1>
+      <p>Vul je ordernummer en e-mailadres in om de status van je bestelling te bekijken.</p>
+    </div></div>
+    <div class="container content-section">
+      <form id="trackForm" style="max-width:480px;">
+        <div class="form-group"><label>Ordernummer</label><input name="bijv. 5PCT-10234" type="text" required placeholder="bijv. 5PCT-10234" /></div>
+        <div class="form-group"><label>E-mailadres</label><input name="E-mailadres" type="email" required /></div>
+        <button type="submit" class="btn btn-red">Status Bekijken</button>
+        <div class="form-note" id="trackStatus">Je bestelling is onderweg! Verwachte levering: 1-2 werkdagen. Track &amp; trace is verstuurd naar je e-mailadres.</div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="page" id="page-faq">
+    <div class="page-header"><div class="container">
+      <h1>Veelgestelde Vragen</h1>
+      <p>Antwoorden op de meest gestelde vragen over 5% Nutrition producten en bestellingen.</p>
+    </div></div>
+    <div class="container content-section">
+      <div class="accordions" style="margin:0;max-width:100%;">
+        <div class="accordion-item">
+          <div class="accordion-head"><h3>Wat is het verschil tussen Kill It en 5150?</h3><span class="plus">+</span></div>
+          <div class="accordion-body"><div class="accordion-body-inner">Kill It is de flexibele, alles-in-&eacute;&eacute;n pre-workout (energie, pump, focus, endurance) met een gematigde tot stevige cafe&iuml;nedosis (163-325mg). 5150 is de high-stimulant formule voor ervaren gebruikers die maximale energie zoeken, tot 400mg cafe&iuml;ne per dosis.</div></div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-head"><h3>Is Full As F*ck geschikt voor de avond?</h3><span class="plus">+</span></div>
+          <div class="accordion-body"><div class="accordion-body-inner">Ja, Full As F*ck is volledig stimulant-vrij en daarom uitstekend geschikt voor avondtrainingen of in combinatie met een cafe&iuml;nehoudende pre-workout.</div></div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-head"><h3>Bevatten de producten kunstmatige kleurstoffen?</h3><span class="plus">+</span></div>
+          <div class="accordion-body"><div class="accordion-body-inner">De formules zijn ontwikkeld met focus op functionele doseringen. Raadpleeg altijd het productlabel voor de meest actuele ingredi&euml;ntenlijst.</div></div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-head"><h3>Kan ik als bedrijf/gym bulk bestellen?</h3><span class="plus">+</span></div>
+          <div class="accordion-body"><div class="accordion-body-inner">Ja, zie onze <a href="#volume-pricing">Staffelprijzen</a> pagina voor staffelkortingen of vraag direct een <a href="#request-quote">offerte aan</a>.</div></div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-head"><h3>Hoe lang duurt de levering?</h3><span class="plus">+</span></div>
+          <div class="accordion-body"><div class="accordion-body-inner">Bestellingen binnen NL/BE worden doorgaans binnen 1-3 werkdagen bezorgd. Zie onze <a href="#shipping">Verzending</a> pagina voor details.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-header">
+    <h3>Winkelwagen (<span id="cartCount">0</span>)</h3>
+    <button class="cart-close" id="cartClose">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <div class="cart-subtotal-row"><span>Subtotaal</span><span id="cartSubtotal">&euro; 0,00</span></div>
+    <button class="btn btn-dark" id="checkoutBtn">Afrekenen</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer>
+  <div class="container">
+    <div class="footer-logo">5<span>%</span> NUTRITION</div>
+    <div class="footer-grid">
+      <div>
+        <h5>Pre-Workout</h5>
+        <ul>
+          <li><a href="#product/kill-it">Kill It</a></li>
+          <li><a href="#product/5150">5150 High-Stim</a></li>
+          <li><a href="#product/full-as-fck">Full As F*ck</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Amino&rsquo;s &amp; Eiwitten</h5>
+        <ul>
+          <li><a href="#product/all-day-you-may">All Day You May</a></li>
+          <li><a href="#product/shake-time">Shake Time</a></li>
+          <li><a href="#product/real-carbs-protein">Real Carbs + Protein</a></li>
+          <li><a href="#product/crea-ten">Crea-TEN</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Productinformatie</h5>
+        <ul>
+          <li><a href="#ingredients">Ingredi&euml;nten</a></li>
+          <li><a href="#nutrition">Voedingswaarden</a></li>
+          <li><a href="#how-to-use">Gebruiksaanwijzing</a></li>
+          <li><a href="#warnings">Waarschuwingen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Bulk &amp; Groothandel</h5>
+        <ul>
+          <li><a href="#volume-pricing">Staffelprijzen</a></li>
+          <li><a href="#request-quote">Offerte Aanvragen</a></li>
+          <li><a href="#resellers">Wederverkopers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Klantenservice</h5>
+        <ul>
+          <li><a href="#faq">Veelgestelde Vragen</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#shipping">Verzending</a></li>
+          <li><a href="#returns">Retourneren</a></li>
+          <li><a href="#track-order">Bestelling Volgen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 5% Nutrition. 5% Nutrition Nederland, IJburglaan 837, Amsterdam.</span>
+      <span>info@5nutritionnederland.nl</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- PRODUCT DATA ---------- */
+  var PRODUCTS = [
+    {
+      slug: "kill-it",
+      name: "Kill It Pre-Workout",
+      category: "Pre-Workout",
+      price: 38.95, oldPrice: 44.95,
+      servings: "30 Porties", reviews: "(2.145 recensies)",
+      desc: "De foundational pre-training formule van 5% Nutrition. Combineert energie, pump, endurance en focus in &eacute;&eacute;n uitgebalanceerde formule. Jij bepaalt de intensiteit: 1 scoop voor gestage prestaties, of 2 scoops voor volle kracht.",
+      overview: "Kill It levert explosieve pumps en vasculariteit dankzij L-Citrulline (2.500/5.000mg), kracht- en herstelondersteuning via Creatine Monohydrate (1.250/2.500mg), plus Taurine, Betaine en Glycerol voor celhydratatie. Een gematigde stimulantdosis (&plusmn;325mg cafe&iuml;ne in 2-scoop modus) en nootropics zorgen voor langdurige focus zonder crash.",
+      flavors: [
+        { key:"bb", label:"Blueberry Lemonade", img:"./assets/img/killit_bb.png" },
+        { key:"mp", label:"Mango Pineapple", img:"./assets/img/killit_mp.png" },
+        { key:"fp", label:"Fruit Punch", img:"./assets/img/killit_fp.png" },
+        { key:"ili", label:"Italian Lemon Ice", img:"./assets/img/killit_ili.png" },
+        { key:"wb", label:"Wildberry", img:"./assets/img/killit_wb.png" },
+        { key:"br", label:"Blue Raspberry", img:"./assets/img/killit_br.png" }
+      ],
+      lifestyleImages: ["./assets/img/killit_lifestyle.jpg", "./assets/img/killit_benefits.jpg", "./assets/img/killit_howtouse.jpg"],
+      features: [
+        { title:"Explosieve Pumps", text:"L-Citrulline (2.500/5.000mg) voor maximale doorbloeding en vasculariteit.*" },
+        { title:"Kracht &amp; Uithoudingsvermogen", text:"Creatine Monohydrate (1.250/2.500mg) plus Taurine, Betaine en Glycerol voor celhydratatie en herstel.*" },
+        { title:"Schone Energie, Geen Crash", text:"Gematigde stimulantdosis (&plusmn;325mg cafe&iuml;ne) en nootropics voor langdurige focus zonder crash.*" },
+        { title:"Flexibele Dosering", text:"Start met 1 scoop om je tolerantie te testen, ga naar 2 scoops voor extra intensiteit.*" },
+        { title:"6 Legendarische Smaken", text:"Zes heerlijke smaken, uitstekend mixbaar in elke shaker.*" },
+        { title:"Volledige Labeltransparantie", text:"Volledige labeltransparantie &mdash; je weet precies wat je binnenkrijgt.*" }
+      ],
+      ingredients: "Caffeine Anhydrous, Caffeine Citrate, L-Citrulline, Creatine Monohydrate, Beta-Alanine, Taurine, Betaine Anhydrous, Glycerol Monostearate, N-Acetyl L-Tyrosine, Huperzine A, Natural &amp; Artificial Flavors, Citric Acid, Silicon Dioxide, Sucralose.",
+      nutrition: "Portiegrootte: 1-2 Scoops (11.2g/22.4g) &middot; Porties Per Verpakking: 30 &middot; Calorieën: 5-10 &middot; Cafeïne: &plusmn;163mg/325mg &middot; L-Citrulline: 2.500mg/5.000mg &middot; Creatine Monohydrate: 1.250mg/2.500mg.",
+      howToUse: "Meng 1 scoop met 250ml water voor gematigde intensiteit, of 2 scoops met 300ml water voor volledige intensiteit. Neem 20-30 minuten voor de training. Test bij eerste gebruik altijd met 1 scoop.",
+      warning: "Niet geschikt voor personen onder de 18 jaar, zwangere of zogende vrouwen. Bevat tot 325mg cafe&iuml;ne per dosis (2 scoops), vergelijkbaar met ongeveer 3 kopjes koffie. Gebruik niet in combinatie met andere cafe&iuml;nebronnen.",
+      featureBar: ["Explosieve Pumps", "Schone Energie", "Spieruithoudingsvermogen", "Flexibele Dosering"]
+    },
+    {
+      slug: "5150",
+      name: "5150 High-Stim Pre-Workout",
+      category: "Pre-Workout",
+      price: 37.95, oldPrice: 45.95,
+      servings: "30 Porties", reviews: "(1.382 recensies)",
+      desc: "De extreme high-stimulant pre-workout voor ervaren gebruikers die maximale energie zoeken. Tot 400mg cafe&iuml;ne uit meerdere bronnen, gecombineerd met L-Citrulline en Beta-Alanine voor pumps en endurance.",
+      overview: "5150 is gebouwd voor wie geen genoegen neemt met gemiddeld. De high-stim formule combineert meerdere cafe&iuml;nebronnen (tot 400mg) met Synephrine, Choline en N-Acetyl L-Tyrosine voor extreme energie en focus, aangevuld met L-Citrulline en Beta-Alanine voor pump en spieruithoudingsvermogen.",
+      flavors: [
+        { key:"fp", label:"Fruit Punch", img:"./assets/img/p5150_fp.png" }
+      ],
+      lifestyleImages: ["./assets/img/p5150_landing.jpg", "./assets/img/killit_benefits.jpg"],
+      features: [
+        { title:"400mg Cafe&iuml;necomplex", text:"Meerdere cafe&iuml;nebronnen voor extreme, langdurige energie.*" },
+        { title:"Explosieve Pumps", text:"L-Citrulline voor verhoogde stikstofmonoxide-productie en doorbloeding.*" },
+        { title:"Spieruithoudingsvermogen", text:"Beta-Alanine helpt vermoeidheid uit te stellen tijdens intensieve sets.*" },
+        { title:"Extreme Focus", text:"N-Acetyl L-Tyrosine en Choline voor scherpe mind-muscle connectie.*" },
+        { title:"Voor Ervaren Sporters", text:"Alleen aanbevolen voor cafe&iuml;netolerante, ervaren sporters.*" },
+        { title:"Volledige Labeltransparantie", text:"Volledige labeltransparantie op elke dosis.*" }
+      ],
+      ingredients: "Caffeine Anhydrous, Caffeine Citrate, L-Citrulline, Beta-Alanine, Taurine, Choline Bitartrate, N-Acetyl L-Tyrosine, Synephrine HCl, Huperzine A, Natural &amp; Artificial Flavors, Citric Acid, Sucralose.",
+      nutrition: "Portiegrootte: 1 Scoop (14.8g) &middot; Porties Per Verpakking: 30 &middot; Calorieën: 10 &middot; Cafeïne: &plusmn;400mg &middot; L-Citrulline: 3.000mg &middot; Beta-Alanine: 2.000mg.",
+      howToUse: "Meng 1 scoop met 250-300ml water, 20-30 minuten voor de training. Gebruik NOOIT meer dan 1 scoop per 24 uur. Niet gebruiken na 16:00 uur i.v.m. de hoge cafe&iuml;nedosis.",
+      warning: "Extreem hoge cafe&iuml;nedosis (400mg per scoop) &mdash; uitsluitend voor ervaren, cafe&iuml;netolerante gebruikers. Niet geschikt voor personen onder de 18 jaar, zwangere of zogende vrouwen, of personen gevoelig voor stimulantia. Overschrijd nooit 1 scoop per dag.",
+      featureBar: ["400mg Cafe&iuml;ne", "Extreme Energie", "Explosieve Pumps", "Scherpe Focus"]
+    },
+    {
+      slug: "full-as-fck",
+      name: "Full As F*ck",
+      category: "Pre-Workout",
+      price: 33.95, oldPrice: 41.95,
+      servings: "25 Porties", reviews: "(864 recensies)",
+      desc: "De 100% stimulant-vrije pump-formule. Perfect voor avondtrainingen of om te stacken met Kill It of 5150 voor extra pumps zonder extra cafe&iuml;ne.",
+      overview: "Full As F*ck combineert L-Citrulline, Nitrosigine&reg; en GlycerSize&reg; (Glycerol) voor extreme, langdurige pumps en celhydratatie &mdash; volledig zonder stimulantia. Ideaal voor avondtraining, cardio-dagen of als aanvulling op je favoriete pre-workout.",
+      flavors: [
+        { key:"bb", label:"Beach Blast", img:"./assets/img/fullaf_bb.png" }
+      ],
+      lifestyleImages: ["./assets/img/adym_lifestyle.jpg", "./assets/img/killit_lifestyle.jpg"],
+      features: [
+        { title:"Stimulantvrije Pumps", text:"100% stimulant-vrij, ideaal voor avondtraining of om te stacken.*" },
+        { title:"Nitrosigine&reg;", text:"Klinisch onderzochte bonded arginine silicate voor bloedtoevoer tot 3 uur.*" },
+        { title:"GlycerSize&reg;", text:"Hyperhydrateert spierweefsel voor een vol, vasculair uiterlijk.*" },
+        { title:"L-Taurine", text:"Ondersteunt celhydratatie en spierfunctie tijdens de training.*" },
+        { title:"Combineerbaar", text:"Perfect te combineren met Kill It of 5150 voor extra pump zonder extra stims.*" },
+        { title:"Volledige Labeltransparantie", text:"Volledige labeltransparantie op elke dosis.*" }
+      ],
+      ingredients: "L-Citrulline, Glycerol Monostearate (GlycerSize&reg;), Nitrosigine&reg; (Arginine Silicate), L-Taurine, Beta-Alanine, Natural &amp; Artificial Flavors, Citric Acid, Sucralose.",
+      nutrition: "Portiegrootte: 1-2 Scoops &middot; Porties Per Verpakking: 25 &middot; Calorieën: 5 &middot; L-Citrulline: 6.000mg &middot; Nitrosigine&reg;: 1.500mg &middot; Glycerol: 1.000mg.",
+      howToUse: "Meng 1-2 scoops met 300ml water, 20-30 minuten voor de training. Kan gecombineerd worden met Kill It of 5150 voor extra pumps zonder extra stimulantia.",
+      warning: "Niet geschikt voor personen onder de 18 jaar, zwangere of zogende vrouwen. Raadpleeg een arts bij gebruik van medicatie of bestaande medische aandoeningen.",
+      featureBar: ["100% Stimulantvrij", "Extreme Pumps", "Celhydratatie", "Volledig Combineerbaar"]
+    },
+    {
+      slug: "all-day-you-may",
+      name: "All Day You May",
+      category: "Amino's",
+      price: 47.95, oldPrice: 54.95,
+      servings: "30 Porties", reviews: "(3.021 recensies)",
+      desc: "De industry-standard recovery drink. Ondersteunt een anabole staat met een constante aanvoer van aminozuren voor herstel, elektrolyten voor hydratatie, en buffers om trainingsplateaus te doorbreken.",
+      overview: "ALL DAY YOU MAY&reg; revolutioneerde de sportvoedingsindustrie en blijft de standaard binnen recovery drinks. De BCAA 10:1:1 ratio met een grote dosis Leucine triggert eiwitsynthese, aangevuld met alle 9 essenti&euml;le aminozuren voor spierherstel en -opbouw, elektrolyten uit kokoswater, Glucosamine en MSM voor gewrichtsondersteuning, en Milk Thistle voor leverondersteuning.",
+      flavors: [
+        { key:"sst", label:"Southern Sweet Tea", img:"./assets/img/adym_pt.png" },
+        { key:"mp", label:"Mango Pineapple", img:"./assets/img/adym_mp.png" }
+      ],
+      lifestyleImages: ["./assets/img/adym_lifestyle.jpg", "./assets/img/adym_benefits.jpg"],
+      features: [
+        { title:"BCAA 10:1:1 Verhouding", text:"5 gram Leucine per dosis voor maximale eiwitsynthese-stimulatie.*" },
+        { title:"Volledig EAA-Profiel", text:"Alle 9 essenti&euml;le aminozuren voor spierherstel en -opbouw.*" },
+        { title:"Ondersteuning Gewrichten &amp; Lever", text:"Glucosamine, MSM en Milk Thistle ondersteunen gewrichten en lever.*" },
+        { title:"Hydratatie", text:"Elektrolyten uit kokoswater voor optimale hydratatie tijdens de training.*" },
+        { title:"De Hele Dag Te Drinken", text:"Geschikt voor gebruik de hele dag door &mdash; ochtend, training en herstel.*" },
+        { title:"Volledige Labeltransparantie", text:"Volledige labeltransparantie op elke dosis.*" }
+      ],
+      ingredients: "L-Leucine, L-Isoleucine, L-Valine (10:1:1), Essential Amino Acid Blend (Phenylalanine, Threonine, Lysine HCl, Histidine HCl, Tryptophan, Methionine), Coconut Water Powder, Glucosamine, MSM, Milk Thistle Extract, Beta-Alanine, B-Vitamins, Natural &amp; Artificial Flavors, Citric Acid, Sucralose.",
+      nutrition: "Portiegrootte: 1 Scoop (&plusmn;15g) &middot; Porties Per Verpakking: 30 &middot; Calorieën: 15 &middot; BCAA: 6g (Leucine 5g) &middot; EAA Blend: 2g &middot; Vitamin B6: 2mg &middot; Vitamin B12: 25mcg.",
+      howToUse: "Meng 1 scoop met 400-500ml water. Drink tijdens de training voor hydratatie en herstel, of gedurende de dag tussen maaltijden door om spierafbraak te voorkomen.",
+      warning: "Niet geschikt voor personen onder de 18 jaar, zwangere of zogende vrouwen. Raadpleeg een arts bij bestaande medische aandoeningen, met name lever- of nieraandoeningen.",
+      featureBar: ["Spierherstel", "Gewrichtsondersteuning", "Hydratatie", "De Hele Dag Te Gebruiken"]
+    },
+    {
+      slug: "shake-time",
+      name: "Shake Time Real Food Protein",
+      category: "Eiwitten",
+      price: 37.95, oldPrice: 44.95,
+      servings: "20 Porties", reviews: "(1.204 recensies)",
+      desc: "24-25g eiwit per shake, afkomstig uit echte voedingsbronnen: rund, kip en volledig ei. Zuivelvrij en boordevol smaak, zonder onnodige vulstoffen.",
+      overview: "Shake Time is gebouwd op het idee dat eiwit uit echte voeding moet komen. In plaats van standaard wei-eiwit combineert deze formule eiwit uit rund, kip en volledig ei voor een compleet aminozuurprofiel, met slechts 2g koolhydraten en 2.5g vet per portie &mdash; ideaal voor een zuivelvrije, smaakvolle shake.",
+      flavors: [
+        { key:"pb", label:"Peanut Butter", img:"./assets/img/shaketime_pb.png" }
+      ],
+      lifestyleImages: ["./assets/img/adym_benefits.jpg", "./assets/img/killit_benefits.jpg"],
+      features: [
+        { title:"24-25g Eiwit Uit Echte Voeding", text:"Eiwit uit rund, kip en volledig ei &mdash; geen standaard wei-concentraat.*" },
+        { title:"Zuivelvrij", text:"Volledig zuivelvrij, geschikt voor wie moeite heeft met lactose.*" },
+        { title:"Weinig Koolhydraten &amp; Vet", text:"Slechts 2g koolhydraten en 2.5g vet per portie.*" },
+        { title:"130 Calorie&euml;n", text:"Compact caloriegehalte, ideaal als snack of maaltijdaanvulling.*" },
+        { title:"Rijke Smaken", text:"Peanut Butter, Chocolate, Cookies &amp; Cream, Birthday Cake beschikbaar.*" },
+        { title:"Volledige Labeltransparantie", text:"Volledige labeltransparantie op elke dosis.*" }
+      ],
+      ingredients: "Beef Protein Isolate, Chicken Protein Isolate, Whole Egg Protein, Natural &amp; Artificial Flavors, Xanthan Gum, Cellulose Gum, Sea Salt, Stevia Extract, Sucralose.",
+      nutrition: "Portiegrootte: 1 Scoop (&plusmn;38g) &middot; Porties Per Verpakking: 20 &middot; Calorieën: 130 &middot; Eiwit: 24-25g &middot; Totaal Vet: 2.5g &middot; Totaal Koolhydraten: 2g.",
+      howToUse: "Meng 1 scoop met 250-350ml water, melk of plantaardige drink. Ideaal als maaltijdvervanger, post-workout shake of eiwitrijke snack tussendoor.",
+      warning: "Bevat ei. Geproduceerd in een faciliteit die ook melk, soja, tarwe, pinda- en notenproducten verwerkt. Niet geschikt voor personen met een eiwit-allergie voor rund, kip of ei.",
+      featureBar: ["24-25g Eiwit", "Zuivelvrij", "Uit Echte Voeding", "Weinig Koolhydraten"]
+    },
+    {
+      slug: "real-carbs-protein",
+      name: "Real Carbs + Protein",
+      category: "Eiwitten",
+      price: 41.95, oldPrice: 49.95,
+      servings: "20 Porties", reviews: "(642 recensies)",
+      desc: "Een complete maaltijdvervanger op basis van echte voeding: 20g eiwit uit rund, kip en volledig ei, gecombineerd met schone koolhydraten uit zoete aardappel, haver en yam.",
+      overview: "Real Carbs + Protein is ontwikkeld voor wie na de training behoefte heeft aan zowel eiwitten als kwalitatieve koolhydraten. De formule combineert 20g eiwit uit echte voedingsbronnen met complexe koolhydraten uit zoete aardappel, haver, yam en blauwe maïs voor langdurige energie en optimaal herstel.",
+      flavors: [
+        { key:"bnb", label:"Banana Nut Bread", img:"./assets/img/realcarbs_bnb.png" }
+      ],
+      lifestyleImages: ["./assets/img/adym_lifestyle.jpg", "./assets/img/killit_benefits.jpg"],
+      features: [
+        { title:"20g Eiwit Uit Echte Voeding", text:"Eiwit uit rund, kip en volledig ei voor compleet aminozuurprofiel.*" },
+        { title:"Schone Complexe Koolhydraten", text:"Koolhydraten uit zoete aardappel, haver, yam en blauwe ma&iuml;s.*" },
+        { title:"Herstel Na De Training", text:"Ideale verhouding eiwit/koolhydraten voor herstel na de training.*" },
+        { title:"Maaltijdvervanger", text:"Kan dienen als volwaardige maaltijdvervanger tussen de maaltijden door.*" },
+        { title:"Geen Toegevoegde Suikers", text:"Schone energie zonder onnodige toegevoegde suikers.*" },
+        { title:"Volledige Labeltransparantie", text:"Volledige labeltransparantie op elke dosis.*" }
+      ],
+      ingredients: "Sweet Potato Powder, Oat Flour, Yam Powder, Blue Corn, Beef Protein Isolate, Chicken Protein Isolate, Whole Egg Protein, Natural Flavors, Sea Salt, Stevia Extract.",
+      nutrition: "Portiegrootte: 1 Scoop (&plusmn;55g) &middot; Porties Per Verpakking: 20 &middot; Calorieën: 220 &middot; Eiwit: 20g &middot; Totaal Koolhydraten: 30g &middot; Totaal Vet: 3g.",
+      howToUse: "Meng 1 scoop met 300-400ml water. Ideaal direct na de training, als maaltijdvervanger of als energieke snack tussen de maaltijden door.",
+      warning: "Bevat ei. Geproduceerd in een faciliteit die ook melk, soja, tarwe, pinda- en notenproducten verwerkt.",
+      featureBar: ["20g Eiwit", "Schone Koolhydraten", "Na De Training", "Maaltijdvervanger"]
+    },
+    {
+      slug: "crea-ten",
+      name: "Crea-TEN Multi-Creatine",
+      category: "Creatine",
+      price: 28.95, oldPrice: 34.95,
+      servings: "25 Porties", reviews: "(918 recensies)",
+      desc: "10-in-1 creatine complex zonder loading fase en met minder bloating. Combineert 10 vormen van creatine met een Creatine Accelerate Blend voor optimale opname.",
+      overview: "Crea-TEN combineert 10 vormen van creatine (waaronder Monohydraat, HCl en Magnesium Chelaat) met een Creatine Accelerate Blend van Taurine, Betaine, Gymnema Sylvestre, Banaba en Fenugreek plus Bioperine&reg; Black Pepper Extract voor optimale absorptie zonder de bloating die vaak geassocieerd wordt met standaard creatine monohydraat.",
+      flavors: [
+        { key:"fp", label:"Fruit Punch", img:"./assets/img/createn_fp.png" }
+      ],
+      lifestyleImages: ["./assets/img/killit_benefits.jpg", "./assets/img/adym_benefits.jpg"],
+      features: [
+        { title:"10 Vormen Van Creatine", text:"Monohydraat, HCl, Magnesium Chelaat en meer, in &eacute;&eacute;n complex.*" },
+        { title:"Geen Loading Fase", text:"Direct effectief vanaf dag 1, geen loading fase nodig.*" },
+        { title:"Minder Bloating", text:"Ontwikkeld om waterretentie en een opgeblazen gevoel te minimaliseren.*" },
+        { title:"Creatine Accelerate Blend", text:"Taurine, Betaine, Gymnema Sylvestre, Banaba en Fenugreek voor optimale opname.*" },
+        { title:"Bioperine&reg;", text:"Zwarte-peperextract voor verbeterde absorptie van actieve ingredi&euml;nten.*" },
+        { title:"Volledige Labeltransparantie", text:"Volledige labeltransparantie op elke dosis.*" }
+      ],
+      ingredients: "Creatine Monohydrate, Creatine HCl, Creatine Magnesium Chelate, Creatine Anhydrous, Creatine Citrate, Creatine Malate, Creatine Pyruvate, Creatine Ethyl Ester, Creatine Alpha-Ketoglutarate, Creatine Orotate, Taurine, Betaine Anhydrous, Gymnema Sylvestre Extract, Banaba Leaf Extract, Fenugreek Extract, Bioperine&reg; (Black Pepper Extract), Natural Flavors, Citric Acid, Sucralose.",
+      nutrition: "Portiegrootte: 1 Scoop (&plusmn;12g) &middot; Porties Per Verpakking: 25 &middot; Calorieën: 5 &middot; Creatine Complex: 5.000mg &middot; Creatine Accelerate Blend: 500mg.",
+      howToUse: "Neem dagelijks 1 scoop, elke dag van het jaar &mdash; ook op rustdagen. Geen loading fase nodig. Meng met 250ml water of je favoriete shake.",
+      warning: "Niet geschikt voor personen onder de 18 jaar, zwangere of zogende vrouwen. Zorg voor voldoende vochtinname gedurende de dag bij gebruik van creatine.",
+      featureBar: ["10 Vormen Creatine", "Geen Loading Fase", "Minder Bloating", "Dagelijks Gebruik"]
+    }
+  ];
+
+  var CATEGORY_LABELS = { "Pre-Workout":"Pre-Workout", "Amino's":"Amino's", "Eiwitten":"Eiwitten", "Creatine":"Creatine" };
+
+  var state = {
+    currentProduct: PRODUCTS[0],
+    selectedFlavorIndex: 0,
+    quantity: 1,
+    cart: [] // { name, flavor, price, qty, img }
+  };
+
+  function fmtPrice(n){
+    return "\u20ac " + n.toFixed(2).replace(".", ",");
+  }
+  function findProduct(slug){
+    for(var i=0;i<PRODUCTS.length;i++){ if(PRODUCTS[i].slug === slug) return PRODUCTS[i]; }
+    return PRODUCTS[0];
+  }
+
+  /* ---------- ROUTER ---------- */
+  var PAGE_MAP = {
+    "#home": "page-home",
+    "#ingredients": "page-ingredients",
+    "#nutrition": "page-nutrition",
+    "#how-to-use": "page-how-to-use",
+    "#warnings": "page-warnings",
+    "#volume-pricing": "page-volume-pricing",
+    "#request-quote": "page-request-quote",
+    "#resellers": "page-resellers",
+    "#contact": "page-contact",
+    "#shipping": "page-shipping",
+    "#returns": "page-returns",
+    "#track-order": "page-track-order",
+    "#faq": "page-faq"
+  };
+  function router(){
+    var hash = window.location.hash || "#home";
+    var pages = document.querySelectorAll(".page");
+    pages.forEach(function(p){ p.classList.remove("active"); });
+    var pageId;
+    if(hash.indexOf("#product/") === 0){
+      pageId = "page-product";
+      var slug = hash.split("/")[1].split("?")[0];
+      state.currentProduct = findProduct(slug);
+      state.selectedFlavorIndex = 0;
+      state.quantity = 1;
+      setTimeout(renderProductPage, 0);
+    } else {
+      var base = hash.split("?")[0];
+      pageId = PAGE_MAP[base] || "page-home";
+    }
+    var target = document.getElementById(pageId);
+    if(target){ target.classList.add("active"); }
+    window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
+    closeMobileMenu();
+  }
+  window.addEventListener("hashchange", router);
+
+  /* ---------- NAV SCROLL ---------- */
+  var navbar = document.getElementById("navbar");
+  window.addEventListener("scroll", function(){
+    if(window.scrollY > 10){ navbar.classList.add("scrolled"); }
+    else { navbar.classList.remove("scrolled"); }
+  });
+
+  /* ---------- MOBILE MENU ---------- */
+  var mobileMenu = document.getElementById("mobileMenu");
+  var hamburgerBtn = document.getElementById("hamburgerBtn");
+  hamburgerBtn.addEventListener("click", function(){
+    mobileMenu.classList.toggle("open");
+  });
+  function closeMobileMenu(){ mobileMenu.classList.remove("open"); }
+
+  /* ---------- CATEGORY TILES ---------- */
+  var catTiles = document.querySelectorAll(".cat-tile");
+  catTiles.forEach(function(tile){
+    tile.addEventListener("click", function(){
+      var target = tile.getAttribute("data-target") || "#home";
+      window.location.hash = target;
+    });
+  });
+
+  /* ---------- PRODUCT GRID (HOME) ---------- */
+  var productGridFull = document.getElementById("productGridFull");
+  PRODUCTS.forEach(function(p){
+    var flavor = p.flavors[0];
+    var card = document.createElement("div");
+    card.className = "product-card";
+    var priceHtml = p.oldPrice
+      ? '<div class="price"><span class="price-new">' + fmtPrice(p.price) + '</span><span class="price-old">' + fmtPrice(p.oldPrice) + '</span></div>'
+      : '<div class="price price-new">' + fmtPrice(p.price) + '</div>';
+    card.innerHTML =
+      '<span class="cat-tag">' + p.category + '</span>' +
+      (p.oldPrice ? '<span class="sale-badge badge-corner">Aanbieding</span>' : '') +
+      '<img src="' + flavor.img + '" alt="' + p.name + '" />' +
+      '<h4>' + p.name + '</h4>' +
+      priceHtml +
+      '<button class="btn btn-dark add-grid-btn" data-slug="' + p.slug + '">In Winkelwagen</button>';
+    card.addEventListener("click", function(e){
+      if(e.target.classList.contains("add-grid-btn")) return;
+      window.location.hash = "#product/" + p.slug;
+    });
+    productGridFull.appendChild(card);
+  });
+  productGridFull.addEventListener("click", function(e){
+    if(e.target.classList.contains("add-grid-btn")){
+      var slug = e.target.getAttribute("data-slug");
+      var p = findProduct(slug);
+      var flavor = p.flavors[0];
+      addToCart({ name: p.name, flavor: flavor.label, price: p.price, qty: 1, img: flavor.img });
+      showToast(p.name + " toegevoegd aan winkelwagen");
+    }
+  });
+
+  /* ---------- NEWSLETTER ---------- */
+
+  /* ---------- MAIL DELIVERY ---------- */
+  var MAIL_TO = "info@thehealthhouse.nl";
+  var SITE_NAME = "5% Nutrition Nederland";
+  function sendMail(form, subject){
+    try{
+      var fd = new FormData(form);
+      var payload = {};
+      fd.forEach(function(v,k){ if(payload[k]){ payload[k] += ", " + v; } else { payload[k] = v; } });
+      payload._replyto = (function(){var e=form.querySelector('input[type="email"]');return e?e.value:"";})();
+      payload._subject = "[" + SITE_NAME + "] " + subject;
+      payload._template = "table";
+      payload._captcha = "false";
+      payload["Website"] = SITE_NAME;
+      payload["Pagina"] = location.hash || "#home";
+      fetch("https://formsubmit.co/ajax/" + MAIL_TO, {
+        method: "POST",
+        headers: {"Content-Type":"application/json","Accept":"application/json"},
+        body: JSON.stringify(payload)
+      }).catch(function(){});
+    }catch(err){}
+  }
+
+  var newsletterForm = document.getElementById("newsletterForm");
+  var newsletterNote = document.getElementById("newsletterNote");
+  newsletterForm.addEventListener("submit", function(e){
+    e.preventDefault();
+      sendMail(newsletterForm, "Nieuwe nieuwsbriefinschrijving");
+    newsletterNote.classList.add("show");
+    newsletterForm.reset();
+  });
+
+  /* ---------- PRODUCT PAGE RENDER ---------- */
+  var pdMainImage = document.getElementById("pdMainImage");
+  var pdThumbs = document.getElementById("pdThumbs");
+  var flavorPills = document.getElementById("flavorPills");
+  var featuresGrid = document.getElementById("featuresGrid");
+  var qtyVal = document.getElementById("qtyVal");
+  var pdLifestyleRow = document.getElementById("pdLifestyleRow");
+  var pdFeatureBar = document.getElementById("pdFeatureBar");
+
+  function renderProductPage(){
+    var PRODUCT = state.currentProduct;
+    var flavor = PRODUCT.flavors[state.selectedFlavorIndex];
+
+    document.getElementById("pdCategoryCrumb").textContent = PRODUCT.category;
+    document.getElementById("pdNameCrumb").textContent = PRODUCT.name;
+    document.getElementById("pdCatBadge").textContent = PRODUCT.category;
+    document.getElementById("pdServingsBadge").textContent = PRODUCT.servings;
+    document.getElementById("pdSaleBadge").style.display = PRODUCT.oldPrice ? "inline-block" : "none";
+    if(PRODUCT.oldPrice){
+      document.getElementById("pdSaleBadge").textContent = "Besparen " + fmtPrice(PRODUCT.oldPrice - PRODUCT.price);
+    }
+    document.getElementById("pdName").innerHTML = PRODUCT.name;
+    document.getElementById("pdReviews").textContent = PRODUCT.reviews;
+    document.getElementById("pdPriceNew").textContent = fmtPrice(PRODUCT.price);
+    document.getElementById("pdPriceOld").style.display = PRODUCT.oldPrice ? "inline" : "none";
+    if(PRODUCT.oldPrice) document.getElementById("pdPriceOld").textContent = fmtPrice(PRODUCT.oldPrice);
+    document.getElementById("pdDesc").innerHTML = PRODUCT.desc;
+    document.getElementById("pdOverviewText").innerHTML = PRODUCT.overview;
+    document.getElementById("pdIngredientsText").innerHTML = PRODUCT.ingredients;
+    document.getElementById("pdNutritionText").innerHTML = PRODUCT.nutrition;
+    document.getElementById("pdHowToUseText").innerHTML = PRODUCT.howToUse;
+    document.getElementById("pdWarningText").innerHTML = PRODUCT.warning;
+    document.title = PRODUCT.name + " | 5% Nutrition";
+
+    pdMainImage.src = flavor.img;
+    pdMainImage.alt = PRODUCT.name + " - " + flavor.label;
+
+    var thumbList = PRODUCT.flavors.map(function(f, i){
+      return { img: f.img, label: f.label, type: "flavor", idx: i };
+    });
+    pdThumbs.innerHTML = "";
+    thumbList.forEach(function(t){
+      var thumb = document.createElement("div");
+      thumb.className = "pd-thumb" + (t.idx === state.selectedFlavorIndex ? " active" : "");
+      thumb.innerHTML = '<img src="' + t.img + '" alt="' + t.label + '" />';
+      thumb.addEventListener("click", function(){
+        state.selectedFlavorIndex = t.idx;
+        renderProductPage();
+      });
+      pdThumbs.appendChild(thumb);
+    });
+
+    flavorPills.innerHTML = "";
+    PRODUCT.flavors.forEach(function(f, i){
+      var pill = document.createElement("button");
+      pill.className = "flavor-pill" + (i === state.selectedFlavorIndex ? " selected" : "");
+      pill.textContent = f.label;
+      pill.addEventListener("click", function(){
+        state.selectedFlavorIndex = i;
+        renderProductPage();
+      });
+      flavorPills.appendChild(pill);
+    });
+
+    qtyVal.textContent = state.quantity;
+
+    pdLifestyleRow.innerHTML = "";
+    (PRODUCT.lifestyleImages || []).forEach(function(img){
+      var el = document.createElement("img");
+      el.src = img; el.alt = PRODUCT.name + " lifestyle";
+      pdLifestyleRow.appendChild(el);
+    });
+
+    featuresGrid.innerHTML = "";
+    PRODUCT.features.forEach(function(f, i){
+      var item = document.createElement("div");
+      item.className = "feature-item";
+      item.innerHTML =
+        '<div class="fnum">0' + (i+1) + '</div>' +
+        '<h4>' + f.title + '</h4>' +
+        '<p>' + f.text + '</p>';
+      featuresGrid.appendChild(item);
+    });
+
+    pdFeatureBar.innerHTML = "";
+    (PRODUCT.featureBar || []).forEach(function(t){
+      var item = document.createElement("div");
+      item.className = "feature-bar-item";
+      item.innerHTML = "<h4>" + t + "</h4>";
+      pdFeatureBar.appendChild(item);
+    });
+  }
+
+  document.getElementById("qtyMinus").addEventListener("click", function(){
+    if(state.quantity > 1){ state.quantity--; qtyVal.textContent = state.quantity; }
+  });
+  document.getElementById("qtyPlus").addEventListener("click", function(){
+    state.quantity++; qtyVal.textContent = state.quantity;
+  });
+
+  var addToCartBtn = document.getElementById("addToCartBtn");
+  addToCartBtn.addEventListener("click", function(){
+    var PRODUCT = state.currentProduct;
+    var flavor = PRODUCT.flavors[state.selectedFlavorIndex];
+    addToCart({
+      name: PRODUCT.name,
+      flavor: flavor.label,
+      price: PRODUCT.price,
+      qty: state.quantity,
+      img: flavor.img
+    });
+    addToCartBtn.classList.add("added");
+    var originalHtml = addToCartBtn.innerHTML;
+    addToCartBtn.innerHTML = "Toegevoegd Aan Winkelwagen!";
+    setTimeout(function(){
+      addToCartBtn.classList.remove("added");
+      addToCartBtn.innerHTML = originalHtml;
+    }, 1200);
+    showToast(PRODUCT.name + " (" + flavor.label + ") toegevoegd aan winkelwagen");
+    openCart();
+  });
+
+  /* ---------- ACCORDIONS ---------- */
+  document.addEventListener("click", function(e){
+    var head = e.target.closest ? e.target.closest(".accordion-head") : null;
+    if(!head) return;
+    var item = head.closest(".accordion-item");
+    var group = item.parentElement;
+    var wasOpen = item.classList.contains("open");
+    group.querySelectorAll(".accordion-item").forEach(function(i){ i.classList.remove("open"); });
+    if(!wasOpen){ item.classList.add("open"); }
+  });
+
+  /* ---------- CART ---------- */
+  var cartOverlay = document.getElementById("cartOverlay");
+  var cartPanel = document.getElementById("cartPanel");
+  var cartToggle = document.getElementById("cartToggle");
+  var cartClose = document.getElementById("cartClose");
+  var cartItemsEl = document.getElementById("cartItems");
+  var cartBadge = document.getElementById("cartBadge");
+  var cartCount = document.getElementById("cartCount");
+  var cartSubtotal = document.getElementById("cartSubtotal");
+  var checkoutBtn = document.getElementById("checkoutBtn");
+
+  function addToCart(item){
+    var existing = state.cart.find(function(c){ return c.name === item.name && c.flavor === item.flavor; });
+    if(existing){ existing.qty += item.qty; } else { state.cart.push(item); }
+    renderCart();
+  }
+  function removeFromCart(index){ state.cart.splice(index, 1); renderCart(); }
+  function updateCartQty(index, delta){
+    var item = state.cart[index];
+    item.qty += delta;
+    if(item.qty <= 0){ removeFromCart(index); return; }
+    renderCart();
+  }
+  function renderCart(){
+    var totalCount = state.cart.reduce(function(sum, c){ return sum + c.qty; }, 0);
+    cartBadge.textContent = totalCount;
+    cartBadge.style.display = totalCount > 0 ? "flex" : "none";
+    cartCount.textContent = totalCount;
+    var subtotal = state.cart.reduce(function(sum, c){ return sum + c.qty * c.price; }, 0);
+    cartSubtotal.textContent = fmtPrice(subtotal);
+    cartItemsEl.innerHTML = "";
+    if(state.cart.length === 0){
+      cartItemsEl.innerHTML = '<div class="cart-empty">Je winkelwagen is leeg.<br/>Whatever it takes &mdash; begin met winkelen.</div>';
+      return;
+    }
+    state.cart.forEach(function(item, idx){
+      var el = document.createElement("div");
+      el.className = "cart-item";
+      el.innerHTML =
+        '<img src="' + item.img + '" alt="' + item.name + '" />' +
+        '<div class="cart-item-info">' +
+          '<h4>' + item.name + '</h4>' +
+          '<div class="flavor">' + item.flavor + '</div>' +
+          '<div class="cart-item-row">' +
+            '<div class="cart-qty">' +
+              '<button class="cart-minus" data-idx="' + idx + '">&minus;</button>' +
+              '<span class="val">' + item.qty + '</span>' +
+              '<button class="cart-plus" data-idx="' + idx + '">+</button>' +
+            '</div>' +
+            '<div class="cart-item-price">' + fmtPrice(item.qty * item.price) + '</div>' +
+          '</div>' +
+          '<button class="cart-remove" data-idx="' + idx + '">Verwijderen</button>' +
+        '</div>';
+      cartItemsEl.appendChild(el);
+    });
+  }
+  cartItemsEl.addEventListener("click", function(e){
+    var idx = e.target.getAttribute("data-idx");
+    if(idx === null) return;
+    idx = parseInt(idx, 10);
+    if(e.target.classList.contains("cart-minus")){ updateCartQty(idx, -1); }
+    else if(e.target.classList.contains("cart-plus")){ updateCartQty(idx, 1); }
+    else if(e.target.classList.contains("cart-remove")){ removeFromCart(idx); }
+  });
+  function openCart(){ cartOverlay.classList.add("open"); cartPanel.classList.add("open"); }
+  function closeCart(){ cartOverlay.classList.remove("open"); cartPanel.classList.remove("open"); }
+  cartToggle.addEventListener("click", openCart);
+  cartClose.addEventListener("click", closeCart);
+  cartOverlay.addEventListener("click", closeCart);
+  checkoutBtn.addEventListener("click", function(){
+    if(state.cart.length === 0){ showToast("Je winkelwagen is leeg"); return; }
+    showToast("Doorverwijzen naar afrekenen...");
+  });
+
+  /* ---------- TOAST ---------- */
+  var toast = document.getElementById("toast");
+  var toastTimer = null;
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add("show");
+    if(toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove("show"); }, 2200);
+  }
+
+  /* ---------- SEARCH ---------- */
+  var SEARCH_INDEX = [];
+  PRODUCTS.forEach(function(p){
+    p.flavors.forEach(function(f, fi){
+      SEARCH_INDEX.push({
+        t: p.name + " - " + f.label, s: p.category, h: "#product/" + p.slug, f: fi, img: f.img,
+        k: (p.name + " " + p.category + " " + f.label + " kopen bestellen").toLowerCase()
+      });
+    });
+  });
+  [
+    {t:"Staffelprijzen", s:"Bulk & Groothandel", h:"#volume-pricing", k:"bulk groothandel staffelprijzen korting staffel hoeveelheid b2b goedkoop"},
+    {t:"Offerte Aanvragen", s:"Bulk & Groothandel", h:"#request-quote", k:"offerte aanvraag bulkbestelling aanvraag b2b kvk"},
+    {t:"Wederverkopers", s:"Bulk & Groothandel", h:"#resellers", k:"wederverkoper distributeur dealer partner marge"},
+    {t:"Ingrediënten", s:"Productinformatie", h:"#ingredients", k:"ingredienten citrulline creatine cafeine teacrine beta alanine bcaa"},
+    {t:"Voedingswaarden", s:"Productinformatie", h:"#nutrition", k:"voedingswaarden supplement label calorieen vitamines portiegrootte"},
+    {t:"Gebruiksaanwijzing", s:"Productinformatie", h:"#how-to-use", k:"gebruiksaanwijzing dosering scoop timing tolerantie combineren aanwijzingen"},
+    {t:"Waarschuwingen", s:"Productinformatie", h:"#warnings", k:"waarschuwingen veiligheid cafeine zwangerschap leeftijd 18 let op"},
+    {t:"Veelgestelde Vragen", s:"Klantenservice", h:"#faq", k:"veelgestelde vragen antwoorden hulp faq"},
+    {t:"Contact", s:"Klantenservice", h:"#contact", k:"contact email telefoon adres amsterdam klantenservice 5% nutrition nederland"},
+    {t:"Verzending", s:"Klantenservice", h:"#shipping", k:"verzending levering gratis verzendkosten nl be eu"},
+    {t:"Retourneren", s:"Klantenservice", h:"#returns", k:"retour terugbetaling retourneren herroeping 14 dagen"},
+    {t:"Bestelling Volgen", s:"Klantenservice", h:"#track-order", k:"bestelling volgen tracking status zending"}
+  ].forEach(function(i){ SEARCH_INDEX.push(i); });
+
+  var searchPanel=document.getElementById("searchPanel");
+  var searchOverlay=document.getElementById("searchOverlay");
+  var searchInput=document.getElementById("searchInput");
+  var searchResults=document.getElementById("searchResults");
+  var searchSel=0, searchCur=[];
+
+  function openSearch(){
+    searchPanel.classList.add("open"); searchOverlay.classList.add("open");
+    renderSearch(""); setTimeout(function(){ searchInput.focus(); }, 60);
+  }
+  function closeSearch(){
+    searchPanel.classList.remove("open"); searchOverlay.classList.remove("open");
+    searchInput.value="";
+  }
+  function renderSearch(q){
+    q=(q||"").trim().toLowerCase();
+    var list = q ? SEARCH_INDEX.filter(function(i){
+      return (i.t+" "+i.s+" "+i.k).toLowerCase().indexOf(q)>-1;
+    }) : SEARCH_INDEX.slice(0,6);
+    searchCur=list; searchSel=0;
+    if(!list.length){
+      searchResults.innerHTML='<div class="search-empty">Geen resultaten voor &ldquo;'+q+'&rdquo;. Probeer &ldquo;pump&rdquo;, &ldquo;eiwit&rdquo; of een smaaknaam.</div>';
+      return;
+    }
+    var html='<div class="search-hint">'+(q?"Resultaten":"Populair")+'</div>';
+    list.forEach(function(i,idx){
+      html+='<div class="search-item'+(idx===0?" sel":"")+'" data-idx="'+idx+'">'+
+        (i.img?'<img src="'+i.img+'" alt="">':'')+
+        '<div><div class="si-title">'+i.t+'</div><div class="si-sub">'+i.s+'</div></div></div>';
+    });
+    searchResults.innerHTML=html;
+  }
+  function gotoSearch(i){
+    if(!i) return;
+    closeSearch();
+    if(window.location.hash===i.h){ router(); } else { window.location.hash=i.h; }
+    if(typeof i.f === "number"){ setTimeout(function(){ state.selectedFlavorIndex=i.f; renderProductPage(); },0); }
+  }
+  document.getElementById("searchToggle").addEventListener("click", openSearch);
+  document.getElementById("searchClose").addEventListener("click", closeSearch);
+  searchOverlay.addEventListener("click", closeSearch);
+  searchInput.addEventListener("input", function(){ renderSearch(this.value); });
+  searchInput.addEventListener("keydown", function(e){
+    if(e.key==="Enter"){ e.preventDefault(); gotoSearch(searchCur[searchSel]); }
+    else if(e.key==="ArrowDown"||e.key==="ArrowUp"){
+      e.preventDefault();
+      if(!searchCur.length) return;
+      searchSel=(searchSel+(e.key==="ArrowDown"?1:-1)+searchCur.length)%searchCur.length;
+      var items=searchResults.querySelectorAll(".search-item");
+      items.forEach(function(el,ix){ el.classList.toggle("sel", ix===searchSel); });
+    }
+  });
+  searchResults.addEventListener("click", function(e){
+    var el=e.target.closest ? e.target.closest(".search-item") : null;
+    if(!el) return;
+    gotoSearch(searchCur[parseInt(el.getAttribute("data-idx"),10)]);
+  });
+  document.addEventListener("keydown", function(e){
+    if(e.key==="Escape"){ closeSearch(); }
+    if((e.key==="k"||e.key==="K") && (e.metaKey||e.ctrlKey)){ e.preventDefault(); openSearch(); }
+  });
+
+  /* ---------- VOLUME PRICING TABLE ---------- */
+  var VOLUME_TIERS = [
+    { range: "1 &ndash; 5 units", price: 38.95 },
+    { range: "6 &ndash; 23 units", price: 34.95 },
+    { range: "24 &ndash; 47 units", price: 30.95 },
+    { range: "48 &ndash; 95 units", price: 27.50 },
+    { range: "96+ units", price: 23.95 }
+  ];
+  var RRP = 44.95;
+  var volumePricingBody = document.getElementById("volumePricingBody");
+  if(volumePricingBody){
+    VOLUME_TIERS.forEach(function(tier, idx){
+      var savingsPct = Math.round((1 - (tier.price / RRP)) * 100);
+      var row = document.createElement("tr");
+      if(idx === VOLUME_TIERS.length - 1){ row.className = "best-value"; }
+      row.innerHTML =
+        "<td>" + tier.range + "</td>" +
+        "<td>" + fmtPrice(tier.price) + "</td>" +
+        "<td class=\"savings\">" + savingsPct + "% vs RRP</td>";
+      volumePricingBody.appendChild(row);
+    });
+  }
+
+  /* ---------- FORMS ---------- */
+  var quoteForm = document.getElementById("quoteForm");
+  var quoteConfirm = document.getElementById("quoteConfirm");
+  if(quoteForm){
+    quoteForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      sendMail(quoteForm, "Nieuwe offerteaanvraag");
+      quoteConfirm.classList.add("show");
+      showToast("Offerteaanvraag verstuurd");
+      quoteForm.reset();
+    });
+  }
+  var contactForm = document.getElementById("contactForm");
+  if(contactForm){
+    contactForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      sendMail(contactForm, "Nieuw contactbericht");
+      showToast("Bericht verstuurd. We reageren snel.");
+      contactForm.reset();
+    });
+  }
+  var trackForm = document.getElementById("trackForm");
+  var trackStatus = document.getElementById("trackStatus");
+  if(trackForm){
+    trackForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      trackStatus.classList.add("show");
+      showToast("Bestelstatus opgehaald");
+    });
+  }
+
+  /* ---------- INIT ---------- */
+  renderProductPage();
+  renderCart();
+  router();
+})();
+</script>
+</body>
+</html>
