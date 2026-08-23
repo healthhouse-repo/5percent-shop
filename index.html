@@ -2321,9 +2321,88 @@
 
   /* MOLLIE integratiepunt: deze functie bouwt straks een Mollie payment aan via de
      backend en stuurt de gebruiker door naar de checkoutUrl die Mollie teruggeeft. */
+  /* ---------- BETALEN VIA MOLLIE ----------
+     De bestelling wordt als échte order aangemaakt op thehealthhouse.nl
+     (kanaal "5percent") en de klant gaat door naar de Mollie-betaalpagina.
+     Mislukt dat, dan gaat er alsnog een melding per mail zodat een verkoop
+     nooit stilzwijgend verdwijnt. */
+  var MOLLIE_API_BASE = "https://mollie-merkshops.vercel.app";
+
   function startPayment(order){
-    /* MOLLIE integratiepunt */
-    showToast("De betaalkoppeling is binnenkort actief. Je bestelling (" + order.orderNumber + ") is opgeslagen.");
+    var payBtn = document.getElementById("payNowBtn");
+    var oudeTekst = payBtn ? payBtn.textContent : "";
+    if(payBtn){ payBtn.disabled = true; payBtn.textContent = "Bezig met betalen\u2026"; }
+
+    function naarAdres(a){
+      a = a || {};
+      return {
+        email: order.contact ? order.contact.email : "",
+        phone: order.contact ? order.contact.phone : "",
+        firstName: a.firstName || "",
+        lastName: a.lastName || "",
+        company: a.company || "",
+        address: [a.street, a.addition].filter(Boolean).join(" "),
+        postalCode: a.postcode || "",
+        city: a.city || "",
+        country: a.country || "NL"
+      };
+    }
+
+    var regels = (order.items || []).map(function(i){
+      return {
+        name: i.name + (i.flavor ? " \u2013 " + i.flavor : ""),
+        slug: i.slug || "",
+        qty: i.qty,
+        price: i.price,
+        vat: 9,
+        flavor: i.flavor || ""
+      };
+    });
+
+    var payload = {
+      merchant: "5percent",
+      orderNumber: order.orderNumber,
+      amount: Math.round(order.totals.total * 100) / 100,
+      description: "5% Nutrition Nederland bestelling " + order.orderNumber,
+      customer: naarAdres(order.invoiceAddress || order.shippingAddress),
+      shippingAddress: naarAdres(order.shippingAddress),
+      items: regels,
+      shippingCost: order.totals.shipping || 0,
+      discount: order.totals.discountAmount || 0,
+      discountLabel: order.totals.discountAmount > 0 ? "Korting" : "",
+      note: order.notes || "",
+      returnBase: window.location.origin + window.location.pathname
+    };
+
+    fetch(MOLLIE_API_BASE + "/api/create-payment", {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify(payload)
+    }).then(function(resp){ return resp.json(); }).then(function(data){
+      if(data.checkoutUrl){ window.location.href = data.checkoutUrl; return; }
+      throw new Error(data.error || "betaling kon niet worden gestart");
+    }).catch(function(err){
+      if(window.console) console.error("Mollie mislukt, terugval op mailmelding:", err);
+      try{
+        var samenvatting = (order.items || []).map(function(i){
+          return i.qty + "x " + i.name + (i.flavor ? " (" + i.flavor + ")" : "");
+        }).join(", ");
+        fetch("https://formsubmit.co/ajax/" + MAIL_TO, {
+          method: "POST",
+          headers: {"Content-Type":"application/json","Accept":"application/json"},
+          body: JSON.stringify({
+            _subject: "[" + SITE_NAME + "] Bestelling " + order.orderNumber + " \u2013 betaling mislukt, handmatig opvolgen",
+            orderNumber: order.orderNumber,
+            orderSummary: samenvatting,
+            email: order.contact ? order.contact.email : "",
+            phone: order.contact ? order.contact.phone : "",
+            total: fmtPrice(order.totals.total)
+          })
+        }).catch(function(){});
+      }catch(e){}
+      showToast("Betalen lukt nu even niet. Je bestelling (" + order.orderNumber + ") is bewaard \u2014 we nemen contact met je op.");
+      if(payBtn){ payBtn.disabled = false; payBtn.textContent = oudeTekst; }
+    });
   }
 
   var payNowBtn = document.getElementById("payNowBtn");
@@ -2383,6 +2462,19 @@
   renderProductPage();
   renderCart();
   router();
+
+  /* #order-confirmed terugkeer vanaf Mollie: ordernummer tonen, mandje legen. */
+  (function(){
+    var hash = window.location.hash || "";
+    if(hash.indexOf("#order-confirmed") !== 0) return;
+    var vraag = hash.split("?")[1] || "";
+    var gevonden = /order=([^&]+)/.exec(vraag);
+    if(gevonden){
+      var el = document.getElementById("confirmedOrderNumber");
+      if(el) el.textContent = decodeURIComponent(gevonden[1]);
+    }
+    try{ state.cart = []; saveCart(); renderCart(); }catch(e){}
+  })();
 
   /* ---------- COOKIE BAR ---------- */
   (function(){
